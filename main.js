@@ -1,5 +1,5 @@
 if (window.__plActive && window.gsap) gsap.globalTimeline.pause(); // يبدأ تحريك الصفحة بعد انتهاء الـ preloader
-const WHATSAPP_NUMBER = "201099687091"; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
+const WHATSAPP_NUMBER = "201000000000"; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
 const productsData = [{
         id: 1,
         name: "فحمة كلاسيك",
@@ -366,13 +366,6 @@ if (window.gsap && window.ScrollTrigger && !matchMedia("(prefers-reduced-motion:
         stagger: .1,
         ease: "power3.out",
         delay: .1
-    });
-    gsap.from(".hero-burger", {
-        scale: .85,
-        opacity: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        delay: .15
     });
 }
 document.documentElement.classList.add("anim");
@@ -860,4 +853,26 @@ watchCards();
 renderAside();
 syncTabs();
 onSpy();
+/* ---- hero pointer parallax (desktop only) ---- */
+(() => {
+    const v = document.querySelector(".hero-parallax"),
+        h = document.querySelector(".hero");
+    if (!v || !h || !matchMedia("(hover:hover) and (pointer:fine)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let r = 0;
+    h.addEventListener("pointermove", e => {
+        if (r) return;
+        r = requestAnimationFrame(() => {
+            r = 0;
+            const b = h.getBoundingClientRect();
+            v.style.setProperty("--mx", ((e.clientX - b.left) / b.width - .5).toFixed(3));
+            v.style.setProperty("--my", ((e.clientY - b.top) / b.height - .5).toFixed(3))
+        })
+    }, {
+        passive: true
+    });
+    h.addEventListener("pointerleave", () => {
+        v.style.setProperty("--mx", 0);
+        v.style.setProperty("--my", 0)
+    })
+})();
 document.documentElement.classList.add("ready");

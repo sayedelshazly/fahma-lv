@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#15110f">
+  <meta name="description" content="فحمة برجر كلوب — برجر مشوي على الفحم ووجبات Golden Meal وطلب سريع عبر واتساب.">
+  <meta property="og:title" content="فحمة برجر كلوب">
+  <meta property="og:description" content="برجر مشوي على الفحم، وجبات Golden Meal، وطلب سريع عبر واتساب.">
+  <meta property="og:type" content="website">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
+  <title>فحمة — برجر خارج المألوف</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lalezar&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <div id="preloader" role="status" aria-live="polite" aria-label="جاري تحميل فحمة">
+    <div class="pl-door l"></div>
+    <div class="pl-door r"></div>
+    <div class="pl-glow"></div>
+    <div class="pl-dust" aria-hidden="true"><i style="--x:6%;--s:2px;--t:4.2s;--d:0.0s;--dx:-25px"></i><i
+        style="--x:17%;--s:2px;--t:4.6s;--d:0.3s;--dx:-8px"></i><i
+        style="--x:29%;--s:2px;--t:5.0s;--d:0.6s;--dx:9px"></i><i
+        style="--x:41%;--s:2px;--t:5.4s;--d:0.9s;--dx:-24px"></i><i
+        style="--x:52%;--s:2px;--t:5.8s;--d:1.2s;--dx:-7px"></i><i
+        style="--x:64%;--s:2px;--t:6.2s;--d:1.6s;--dx:10px"></i><i
+        style="--x:76%;--s:2px;--t:4.5s;--d:1.9s;--dx:-23px"></i><i
+        style="--x:87%;--s:2px;--t:4.9s;--d:2.2s;--dx:-6px"></i><i
+        style="--x:3%;--s:2px;--t:5.3s;--d:0.3s;--dx:11px"></i></div>
+    <div class="pl-center">
+      <div class="pl-markwrap"><i class="pl-halo"></i>
+        <svg class="pl-mark" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="plg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ff8a4c" />
+              <stop offset="1" stop-color="#e8481a" />
+            </linearGradient>
+            <linearGradient id="plsh" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity="0" />
+              <stop offset=".5" stop-color="#fff" stop-opacity=".6" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            </linearGradient>
+            <clipPath id="plclip">
+              <rect x="8" y="8" width="104" height="104" rx="28" />
+            </clipPath>
+          </defs>
+          <rect class="pl-fill" x="8" y="8" width="104" height="104" rx="28" fill="url(#plg)" />
+          <rect class="pl-ring" x="8" y="8" width="104" height="104" rx="28" pathLength="1" />
+          <path class="pl-flame" pathLength="1" transform="translate(17 23) scale(1.35)"
+            d="M32 3c3 10 16 17 16 33a16 16 0 0 1-32 0c0-8 4-13 8-18 1 5 4 8 7 9-1-9-1-16 1-24z" />
+          <g clip-path="url(#plclip)">
+            <rect class="pl-shine" x="-40" y="-10" width="34" height="140" fill="url(#plsh)" />
+          </g>
+        </svg></div>
+      <div class="pl-wordmask">
+        <div class="pl-word">فَحْمَة</div>
+      </div><i class="pl-line"></i>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const el = document.getElementById("preloader");
+      if (!el) return;
+      const PRELOADER_ONCE = false; /* true = يظهر مرة واحدة فقط في كل جلسة */
+      try {
+        if (PRELOADER_ONCE && sessionStorage.getItem("fahmaPL")) {
+          el.remove();
+          return
+        }
+        sessionStorage.setItem("fahmaPL", "1")
+      } catch (e) {}
+      const root = document.documentElement,
+        reduce = matchMedia("(prefers-reduced-motion: reduce)").matches,
+        MIN = reduce ? 700 : 3000,
+        MAX = 5500;
+      let done = false,
+        loaded = document.readyState === "complete";
+      if (!loaded) addEventListener("load", () => {
+        loaded = true
+      });
+      root.classList.add("pl-lock");
+      window.__plActive = true;
+
+      function finish() {
+        if (done) return;
+        done = true;
+        el.classList.add("out");
+        root.classList.remove("pl-lock");
+        window.__plActive = false;
+        if (window.gsap) gsap.globalTimeline.resume();
+        const hb = document.querySelector(".hero-burger");
+        if (hb) {
+          hb.style.animation = "none";
+          void hb.offsetWidth;
+          hb.style.animation = ""
+        }
+        setTimeout(() => el.remove(), 1300)
+      }
+      setTimeout(() => {
+        if (loaded) finish();
+        else addEventListener("load", finish, {
+          once: true
+        })
+      }, MIN);
+      setTimeout(finish, MAX);
+    })();
+  </script>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="فحمة، الصفحة الرئيسية"><span class="brand-mark"><i
+            class="fa-solid fa-fire-flame-curved"></i></span><span>فَحْمَة<small>BURGER CLUB</small></span></a>
+      <nav class="nav-links" id="navLinks" aria-label="التنقل الرئيسي">
+        <a class="active" href="#home">الرئيسية</a><a href="#categories">الأقسام</a><a href="#/menu">قائمة الطعام</a><a
+          href="#golden">Golden Meal</a><a href="#tracking">تتبع طلبك</a>
+      </nav>
+      <div class="nav-actions"><button class="icon-btn" id="openCart" aria-label="فتح سلة الطلبات"><i
+            class="fa-solid fa-bag-shopping"></i><span class="count" id="cartCount">0</span></button><a
+          class="btn btn-orange" href="#/menu">اطلب وجبتك <i class="fa-solid fa-arrow-left"></i></a><button
+          class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة"><i
+            class="fa-solid fa-bars"></i></button></div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="home"><canvas id="embers" aria-hidden="true"></canvas>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">مش مجرد برجر… دي حكاية</span>
+          <h1>عضّة واحدة<br>وتدخل <span>المود.</span></h1>
+          <p>لحم مشوي على اللهب، جبنة سايحة، وصوصات معمولة مخصوص. كل طبقة ليها حكاية… وكل عضّة تستاهل.</p>
+          <div class="hero-actions"><a class="btn btn-orange" href="#/menu">اكتشف المنيو <i
+                class="fa-solid fa-arrow-left"></i></a><a class="btn btn-outline"
+              style="color:#f5f0e5;border-color:#ffffff35" href="#golden"><i class="fa-solid fa-crown"
+                style="color:var(--gold)"></i> جرّب الـ Golden Meal</a></div>
+          <div class="hero-note"><span
+              style="color:#f0d594;font-size:15px;letter-spacing:2px">★★★★★</span><span><strong>+2,400 عميل</strong>
+              رجعوا يطلبوا تاني</span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-ring"></div><img class="hero-burger"
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1000&auto=format&fit=crop&q=90"
+            alt="برجر فاخر بطبقات الجبن والخس">
+          <div class="hero-sticker">طازة كل يوم<br>🔥 على اللهب</div>
+          <div class="hero-price" role="link" tabindex="0" onclick="goProduct(2)"
+            onkeydown="if(event.key==='Enter')goProduct(2)"><span class="mini-icon"><i
+                class="fa-solid fa-fire"></i></span><span><small>اختيار الشيف</small><strong>179
+                <small>ج.م</small></strong></span></div>
+        </div>
+      </div>
+      <div class="hero-bottom"></div>
+    </section>
+    <div class="ticker" aria-label="عبارات المطعم">
+      <div class="ticker-track"><span>REAL SMOKE. REAL FLAVOR. <i class="fa-solid fa-star"></i> برجر معمول
+          بحب</span><span>NO BORING BITES. <i class="fa-solid fa-fire"></i> عضّة مختلفة كل مرة</span><span>GOLDEN TASTE.
+          <i class="fa-solid fa-crown"></i> خليك في الـ VIP</span><span>REAL SMOKE. REAL FLAVOR. <i
+            class="fa-solid fa-star"></i> برجر معمول بحب</span><span>NO BORING BITES. <i class="fa-solid fa-fire"></i>
+          عضّة مختلفة كل مرة</span><span>GOLDEN TASTE. <i class="fa-solid fa-crown"></i> خليك في الـ VIP</span></div>
+    </div>
+    <section class="categories" id="categories">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">اختار مزاجك</span>
+            <h2>كل نفس وله <span style="color:var(--orange)">وجبة.</span></h2>
+          </div>
+          <p>من الكلاسيك اللي بتحبه، لحد اختياراتنا الجريئة. لفّ في الأقسام واكتشف اللي على مزاجك.</p>
+        </div>
+        <div class="category-row reveal">
+          <button class="category" data-category="all"><span class="category-icon">🍔</span><span><strong>كل
+                المنيو</strong><small>كل الاختيارات</small></span></button>
+          <button class="category" data-category="beef"><span class="category-icon">🥩</span><span><strong>بيف
+                برجر</strong><small>لحم على اللهب</small></span></button>
+          <button class="category" data-category="chicken"><span class="category-icon">🍗</span><span><strong>تشيكن
+                كرنشي</strong><small>قرمشة على أصولها</small></span></button>
+          <button class="category" data-category="sides"><span
+              class="category-icon">🍟</span><span><strong>سايدز</strong><small>كمل التجربة</small></span></button>
+          <button class="category" data-category="gold"><span class="category-icon">👑</span><span><strong>Golden
+                Meals</strong><small>اختيارات الـ VIP</small></span></button>
+        </div>
+      </div>
+    </section>
+    <section class="featured" id="featured-sec">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <h2>اختيارات فحمة</h2>
+          </div>
+          <p>٣ وجبات بيطلبها الناس أكتر. والمنيو كامل على بعد ضغطة.</p>
+        </div>
+        <div class="products feat-grid" id="featured"></div>
+        <div class="featured-cta"><a class="btn btn-orange" href="#/menu">شوف المنيو كامل <i
+              class="fa-solid fa-arrow-left"></i></a></div>
+      </div>
+    </section>
+    <section class="golden-banner" id="golden">
+      <div class="wrap">
+        <div class="gx reveal">
+          <div class="gx-copy"><span class="gx-kicker"><i class="fa-solid fa-crown"></i> Golden Selection</span>
+            <h2 id="gxName"></h2>
+            <p class="gx-lead" id="gxDesc"></p>
+            <ul class="gx-list" id="gxList"></ul>
+            <div class="gx-tabs" id="gxTabs"></div>
+            <div class="gx-buy">
+              <div class="gx-price"><small>السعر</small><strong id="gxPrice"></strong></div><button class="btn btn-gold"
+                id="gxOrder">أضف للسلة <i class="fa-solid fa-bag-shopping"></i></button><button class="btn btn-outline"
+                id="gxMore">تفاصيل الوجبة</button>
+            </div><button class="gx-link" id="goldenExplore">شوف كل وجبات Golden</button>
+          </div>
+          <div class="gx-visual"><img id="gxImg" alt="Golden Meal" onerror="imgFail(this)"><span class="gx-badge"
+              id="gxBadge"></span></div>
+        </div>
+      </div>
+    </section>
+    <section class="promise">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">ليه فحمة؟</span>
+            <h2>التفاصيل هي <span style="color:var(--orange)">الفرق.</span></h2>
+          </div>
+          <p>مش بنستعجل الطعم الحلو. بنهتم بكل خطوة من أول المكونات لحد ما الطلب يوصل لك.</p>
+        </div>
+        <div class="promise-grid">
+          <div class="promise-card reveal"><span class="promise-icon"><i class="fa-solid fa-fire-burner"></i></span>
+            <div>
+              <h3>شوي على اللهب</h3>
+              <p>نكهة مدخنة حقيقية من الشواية، مش مجرد طعم صوص.</p>
+            </div>
+          </div>
+          <div class="promise-card reveal"><span class="promise-icon"><i class="fa-solid fa-leaf"></i></span>
+            <div>
+              <h3>مكونات طازة</h3>
+              <p>خضار طازة، خبز يومي، ومكونات بنختارها بعناية.</p>
+            </div>
+          </div>
+          <div class="promise-card reveal"><span class="promise-icon"><i class="fa-solid fa-truck-fast"></i></span>
+            <div>
+              <h3>لحد بابك</h3>
+              <p>تغليف يحافظ على سخونة الوجبة، وتحديثات واضحة لطلبك.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="tracking" id="tracking">
+      <div class="wrap track-layout">
+        <div class="track-copy reveal"><span class="eyebrow">أوردرِك فين؟</span>
+          <h2>من الشواية<br>لحد <span style="color:var(--orange)">بابك.</span></h2>
+          <p>اطمّن على طلبك في أي وقت. اكتب رقم الطلب عشان تشوف آخر تحديث لحالته.</p>
+          <form class="track-form" id="trackForm"><input id="orderNumber" placeholder="مثال: FH-1024"
+              aria-label="رقم الطلب" required><button class="btn btn-orange" type="submit">تتبع الطلب <i
+                class="fa-solid fa-location-arrow"></i></button></form>
+          <div class="track-result" id="trackResult" aria-live="polite" role="status"></div>
+        </div>
+        <div class="track-card reveal">
+          <div class="track-card-top">
+            <div><small>مثال توضيحي لحالة الطلب</small>
+              <h3>طلبك بيتحضّر بحب </h3>
+            </div><span class="status-pill">جاري التحضير</span>
+          </div>
+          <div class="steps">
+            <div class="step done"><span class="step-dot"><i class="fa-solid fa-check"></i></span><strong>تم
+                التأكيد</strong><small>وصلنا طلبك</small></div>
+            <div class="step done"><span class="step-dot"><i class="fa-solid fa-fire"></i></span><strong>في
+                الشواية</strong><small>بنجهزه طازة</small></div>
+            <div class="step"><span class="step-dot"><i
+                  class="fa-solid fa-box"></i></span><strong>التغليف</strong><small>جاهز للخروج</small></div>
+            <div class="step"><span class="step-dot"><i class="fa-solid fa-motorcycle"></i></span><strong>في
+                الطريق</strong><small>لحد بابك</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section class="mp" id="menuPage" hidden>
+    <div class="wrap">
+      <nav class="mp-crumb" aria-label="مسار التنقل"><a href="#home">الرئيسية</a><span>/</span><span>المنيو</span></nav>
+      <h1 id="mpTitle">المنيو</h1>
+      <nav class="mp-tabs" id="mpTabs" aria-label="أقسام المنيو"></nav>
+      <div class="mp-tools"><label class="searchbox"><i class="fa-solid fa-magnifying-glass"></i><input type="search"
+            id="searchInput" placeholder="بتدور على إيه؟" aria-label="ابحث في قائمة الطعام"></label><select
+          class="mp-sort" id="sortSelect" aria-label="ترتيب الوجبات">
+          <option value="popular">الأكثر طلبًا</option>
+          <option value="new">وصل حديثًا</option>
+          <option value="price">السعر: الأقل أولًا</option>
+        </select></div>
+      <div class="mp-layout">
+        <div class="products menu-grid" id="products"></div>
+        <aside class="mp-aside" id="asideCart" aria-label="سلة المشتريات"></aside>
+      </div>
+    </div>
+  </section>
+  <section class="pp" id="productPage" hidden></section>
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="brand" href="#home"><span class="brand-mark"><i
+                class="fa-solid fa-fire-flame-curved"></i></span><span>فَحْمَة<small>BURGER CLUB</small></span></a>
+          <p>إحنا مش بنعمل برجر وخلاص. إحنا بنعمل تجربة تستاهل تتكرر. تعالى جعان… وامشي مبسوط.</p>
+          <div class="socials"><a href="#" aria-label="إنستجرام"><i class="fa-brands fa-instagram"></i></a><a href="#"
+              aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="تيك توك"><i
+                class="fa-brands fa-tiktok"></i></a></div>
+        </div>
+        <div class="footer-col">
+          <h4>اتنقّل بسرعة</h4><a href="#/menu">قائمة الطعام</a><a href="#golden">Golden Meals</a><a
+            href="#tracking">تتبع الطلب</a><a href="#categories">الأقسام</a>
+        </div>
+        <div class="footer-col">
+          <h4>محتاج مساعدة؟</h4><a href="#" id="footerWhatsApp">اطلب على واتساب</a><a href="#tracking">حالة الطلب</a><a
+            href="mailto:hello@fahma.example">راسلنا</a>
+        </div>
+        <div class="footer-col">
+          <h4>مواعيدنا</h4>
+          <p><i class="fa-regular fa-clock" style="color:var(--orange);margin-left:7px"></i> يوميًا من ١٢ ظهرًا لـ ٢
+            صباحًا</p>
+          <p><i class="fa-solid fa-location-dot" style="color:var(--orange);margin-left:7px"></i> القاهرة، مصر</p>
+          <p>هنكون مبسوطين نشوفك ❤️</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 فحمة برجر كلوب — كل الحقوق محفوظة</span><span>اتعمل بحب… واتشوى على
+          اللهب.</span></div>
+    </div>
+  </footer>
+  <button class="whatsapp-float" id="whatsappFloat"><i class="fa-brands fa-whatsapp"></i><span>اطلب على
+      واتساب</span></button>
+  <div class="overlay cart-overlay" id="cartOverlay" role="dialog" aria-modal="true" aria-label="سلة الطلبات">
+    <aside class="cart-panel">
+      <div class="cart-head">
+        <h2>سلة طلباتك <span style="color:var(--orange)" id="cartTitleCount">(0)</span></h2><button class="icon-btn"
+          id="closeCart" aria-label="إغلاق السلة" style="color:var(--ink);border-color:#e5dccd"><i
+            class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <div class="summary-line"><span>المجموع الفرعي</span><strong id="subtotal">0 ج.م</strong></div>
+        <div class="summary-line"><span>التوصيل</span><strong id="delivery">25 ج.م</strong></div>
+        <div class="summary-line total"><span>الإجمالي</span><strong id="total">25 ج.م</strong></div><button
+          class="btn btn-orange checkout" id="checkout">كمّل طلبك على واتساب <i
+            class="fa-brands fa-whatsapp"></i></button>
+        <p style="font-size:9px;color:#8d8679;text-align:center;line-height:1.8">سيتم إرسال تفاصيل السلة إلى واتساب
+          لإتمام الطلب. الدفع والتأكيد النهائي خارج هذا النموذج التجريبي.</p>
+      </div>
+    </aside>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
