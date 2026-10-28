@@ -165,25 +165,6 @@ a {
     padding: 0 4px
 }
 
-header {
-    height: 82px;
-    background: var(--ink);
-    color: var(--cream);
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 1px solid #ffffff0d
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px
-}
-
 .brand {
     display: flex;
     align-items: center;
@@ -210,34 +191,7 @@ header {
     font: 500 8px "DM Sans";
     letter-spacing: 3px;
     color: #aaa69b;
-    margin-top: 1px
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    font-size: 12px;
-    color: #c9c5b9
-}
-
-.nav-links a {
-    transition: color .2s
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--orange)
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px
-}
-
-.menu-toggle {
-    display: none
+    margin-top: -8px
 }
 
 .hero {
@@ -1362,10 +1316,6 @@ footer {
 }
 
 @media(max-width:980px) {
-    .nav-links {
-        gap: 15px
-    }
-
     .hero-grid {
         grid-template-columns: 1fr 1fr;
         gap: 0
@@ -1401,43 +1351,8 @@ footer {
         width: min(100% - 32px, 560px)
     }
 
-    header {
-        height: 70px
-    }
-
     .brand {
         font-size: 19px
-    }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 69px;
-        right: 0;
-        left: 0;
-        background: var(--ink);
-        padding: 22px 24px 26px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        border-top: 1px solid var(--line)
-    }
-
-    .nav-links.open {
-        display: flex
-    }
-
-    .nav-links a {
-        padding: 13px 0;
-        border-bottom: 1px solid #ffffff0c
-    }
-
-    .nav-actions .btn {
-        display: none
-    }
-
-    .menu-toggle {
-        display: grid
     }
 
     .hero {
@@ -1915,13 +1830,6 @@ h2 span {
     font-family: inherit
 }
 
-header {
-    height: 76px;
-    background: #15110fe8;
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line)
-}
-
 .brand {
     font-size: 30px
 }
@@ -1930,11 +1838,6 @@ header {
     border-radius: 12px;
     transform: none;
     color: var(--coal)
-}
-
-.nav-links {
-    font-size: 14px;
-    color: #cfc7ba
 }
 
 .hero {
@@ -2198,9 +2101,6 @@ header {
     color: var(--soft)
 }
 
-
-
-
 .promise-card {
     background: var(--smoke);
     border: 1px solid var(--line);
@@ -2424,15 +2324,6 @@ h2 {
     z-index: 0
 }
 
-header {
-    transition: height .3s, background .3s
-}
-
-header.scrolled {
-    height: 62px;
-    background: #15110ff7
-}
-
 .anim .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -2608,45 +2499,9 @@ footer {
     .hero h1 {
         font-size: clamp(54px, 7.4vw, 92px)
     }
-
-    .nav-links {
-        gap: 18px
-    }
 }
 
 @media(max-width:860px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        background: var(--coal);
-        padding: 14px 24px 22px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        border-bottom: 1px solid var(--line);
-        font-size: 16px
-    }
-
-    .nav-links.open {
-        display: flex
-    }
-
-    .nav-links a {
-        padding: 14px 0;
-        border-bottom: 1px solid #ffffff0f
-    }
-
-    .nav-actions .btn {
-        display: none
-    }
-
-    .menu-toggle {
-        display: grid
-    }
-
     .hero {
         min-height: 0;
         padding: 40px 0 76px
@@ -5576,5 +5431,618 @@ footer {
 
     .section-head {
         margin-bottom: 16px
+    }
+}
+
+/* ==========================================================================
+   HEADER — Ember Capsule  (+ mobile spacing tweaks)
+   ========================================================================== */
+/* المساحة اللي بياخدها الهيدر العايم (بتتحسب في الـ padding بتاع الصفحات) */
+:root {
+    --hh: calc(76px + env(safe-area-inset-top))
+}
+
+@media(min-width:861px) {
+    :root {
+        --hh: calc(88px + env(safe-area-inset-top))
+    }
+}
+
+html {
+    scroll-padding-top: calc(var(--hh) + 6px)
+}
+
+html.nav-open,
+html.nav-open body {
+    overflow: hidden
+}
+
+html.nav-open .whatsapp-float {
+    opacity: 0;
+    pointer-events: none
+}
+
+/* ---------- الكبسولة العايمة ---------- */
+header {
+    position: fixed;
+    top: calc(10px + env(safe-area-inset-top));
+    left: 0;
+    right: 0;
+    z-index: 60;
+    height: auto;
+    display: block;
+    padding: 0;
+    background: none;
+    border: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    pointer-events: none;
+    transition: none
+}
+
+header.scrolled {
+    height: auto;
+    background: none
+}
+
+header .nav {
+    position: relative;
+    isolation: isolate;
+    pointer-events: auto;
+    width: min(calc(100% - 20px), 1180px);
+    margin: 0 auto;
+    min-height: 56px;
+    padding: 6px 10px 6px 12px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: width .45s cubic-bezier(.2, .8, .2, 1)
+}
+
+/* الزجاج على pseudo-element عشان الـ backdrop-filter ميكسرش الـ position:fixed للقائمة */
+header .nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(180deg, #201a17c7, #15110fb8);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+    border: 1px solid #ece5d81f;
+    box-shadow: 0 12px 40px #000000a0, inset 0 1px 0 #ffffff14;
+    transition: border-color .3s
+}
+
+header.scrolled .nav::before {
+    border-color: #ff8a4c47
+}
+
+/* خط تقدّم القراءة على حافة الكبسولة */
+header .nav::after {
+    content: "";
+    position: absolute;
+    left: 26px;
+    right: 26px;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #d2a64e, #ff5a26);
+    transform-origin: right center;
+    transform: scaleX(var(--sp, 0));
+    pointer-events: none
+}
+
+.brand,
+.nav-actions {
+    position: relative;
+    z-index: 2
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+header .nav-links {
+    color: #cfc7ba
+}
+
+.brand {
+    font-size: 24px;
+    gap: 10px;
+    min-width: 0
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px
+}
+
+.brand-mark i {
+    animation: hdFlick 3.4s ease-in-out infinite
+}
+
+.brand small.nav-where {
+    display: none
+}
+
+header .icon-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff0f;
+    border: 1px solid #ece5d81f;
+    color: var(--ash);
+    display: grid;
+    place-items: center;
+    transition: background .25s, border-color .25s, transform .25s
+}
+
+header .icon-btn:hover {
+    background: #ff5a2622;
+    border-color: #ff8a4c66
+}
+
+header .icon-btn:active {
+    transform: scale(.94)
+}
+
+.menu-toggle {
+    display: none
+}
+
+.menu-toggle i {
+    animation: hdTog .45s cubic-bezier(.2, .8, .2, 1)
+}
+
+.nav-ind {
+    display: none
+}
+
+.nav-extra {
+    display: none
+}
+
+/* ---------- كمبيوتر ---------- */
+@media(min-width:861px) {
+    header .nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 16px;
+        padding: 6px 10px 6px 14px
+    }
+
+    header.scrolled .nav {
+        width: min(calc(100% - 28px), 1040px)
+    }
+
+    .brand {
+        justify-self: start
+    }
+
+    .nav-actions {
+        justify-self: end
+    }
+
+    header .nav-links {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        padding: 4px;
+        border-radius: 999px;
+        background: #ffffff0b;
+        border: 1px solid #ece5d812;
+        font-size: 14px
+    }
+
+    header .nav-links a {
+        position: relative;
+        z-index: 1;
+        padding: 9px 16px;
+        border-radius: 999px;
+        color: #cfc7ba;
+        white-space: nowrap;
+        transition: color .25s
+    }
+
+    header .nav-links a:hover,
+    header .nav-links a.active {
+        color: var(--ash)
+    }
+
+    header .nav-links a.is-under {
+        color: #15110f
+    }
+
+    .nav-ind {
+        display: block;
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 0;
+        width: var(--iw, 0);
+        transform: translateX(var(--ix, 0));
+        border-radius: 999px;
+        background: linear-gradient(135deg, #ff8a4c, #ff5a26);
+        box-shadow: 0 0 22px #ff5a2680;
+        opacity: 0;
+        transition: transform .5s cubic-bezier(.2, .8, .2, 1), width .5s cubic-bezier(.2, .8, .2, 1), opacity .2s
+    }
+
+    .nav-actions .btn-orange {
+        border-radius: 999px;
+        padding: 11px 18px;
+        font-size: 13px;
+        white-space: nowrap
+    }
+}
+
+/* ---------- موبايل: كبسولة + قائمة كاملة بتنفجر من الزرار ---------- */
+@media(max-width:860px) {
+    header .nav {
+        min-height: 54px;
+        padding: 5px 8px 5px 10px
+    }
+
+    header .nav::after {
+        display: none
+    }
+
+    .brand {
+        font-size: 22px;
+        gap: 9px
+    }
+
+    .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 11px;
+        font-size: 17px
+    }
+
+    .brand>span:last-child {
+        display: flex;
+        flex-direction: row;
+        line-height: 1.00;
+    }
+
+    .brand small:not(.nav-where) {
+        display: none
+    }
+
+    .brand small.nav-where {
+        display: block;
+        overflow: hidden;
+        margin-top: 2px;
+        margin-right:10px;
+        font: 600 11px "IBM Plex Sans Arabic", sans-serif;
+        letter-spacing: 0;
+        color: var(--ember-2)
+    }
+
+    .brand small.nav-where.swap {
+        animation: hdWhere .5s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    .nav-actions {
+        gap: 8px
+    }
+
+    .nav-actions .btn {
+        display: none
+    }
+
+    .menu-toggle {
+        display: grid
+    }
+
+    /* حلقة تقدّم القراءة حوالين الزرار */
+    .menu-toggle::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: conic-gradient(var(--ember) calc(var(--sp, 0)*360deg), transparent 0);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+        pointer-events: none
+    }
+
+    html.nav-open .menu-toggle {
+        background: var(--ember);
+        border-color: var(--ember);
+        color: var(--coal)
+    }
+
+    header .nav-links {
+        counter-reset: nv;
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
+        overflow-y: auto;
+        padding: calc(var(--hh) + 22px) 26px calc(26px + env(safe-area-inset-bottom));
+        background: radial-gradient(70% 45% at 50% 105%, #ff5a2640, transparent 70%), radial-gradient(60% 30% at 82% 0, #d2a64e1c, transparent 70%), #0e0b09;
+        border: 0;
+        font-size: inherit;
+        clip-path: circle(0px at var(--tx, 40px) var(--ty, 36px));
+        visibility: hidden;
+        pointer-events: none;
+        transition: clip-path .8s cubic-bezier(.77, 0, .18, 1), visibility 0s .8s
+    }
+
+    header .nav-links.open {
+        clip-path: circle(150vmax at var(--tx, 40px) var(--ty, 36px));
+        visibility: visible;
+        pointer-events: auto;
+        transition: clip-path .8s cubic-bezier(.77, 0, .18, 1), visibility 0s
+    }
+
+    /* علامة شعلة كبيرة باهتة في الخلفية */
+    header .nav-links::before {
+        content: "";
+        position: fixed;
+        right: -14%;
+        bottom: -8%;
+        width: 82vw;
+        aspect-ratio: 1;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23ff5a26' d='M32 3c3 10 16 17 16 33a16 16 0 0 1-32 0c0-8 4-13 8-18 1 5 4 8 7 9-1-9-1-16 1-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+        opacity: .07;
+        pointer-events: none;
+        animation: hdFlame 4s ease-in-out infinite
+    }
+
+    header .nav-links a {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        padding: 14px 4px;
+        border-bottom: 1px solid #ece5d81a;
+        font: 400 clamp(32px, 9.4vw, 46px)/1.15 Lalezar, "IBM Plex Sans Arabic", sans-serif;
+        color: var(--ash);
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity .5s, transform .65s cubic-bezier(.2, .8, .2, 1), color .25s
+    }
+
+    header .nav-links.open a {
+        opacity: 1;
+        transform: none;
+        transition-delay: calc(.3s + var(--i, 0)*.07s)
+    }
+
+    header .nav-links a::before {
+        counter-increment: nv;
+        content: "0"counter(nv);
+        font: 600 12px "IBM Plex Sans Arabic", sans-serif;
+        letter-spacing: .1em !important;
+        color: var(--brass)
+    }
+
+    header .nav-links a.active {
+        color: var(--ember-2)
+    }
+
+    header .nav-links a.active::after {
+        content: "";
+        width: 9px;
+        height: 9px;
+        margin-inline-start: auto;
+        align-self: center;
+        border-radius: 50%;
+        background: var(--ember);
+        box-shadow: 0 0 14px var(--ember)
+    }
+
+    header .nav-links .nav-extra {
+        display: grid;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 22px;
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity .5s, transform .65s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    header .nav-links.open .nav-extra {
+        opacity: 1;
+        transform: none;
+        transition-delay: calc(.3s + var(--i, 0)*.07s)
+    }
+
+    header .nav-links .nav-extra a.btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 16px;
+        border: 0;
+        border-radius: 14px;
+        font: 700 15px "IBM Plex Sans Arabic", sans-serif;
+        color: var(--coal);
+        opacity: 1;
+        transform: none
+    }
+
+    header .nav-links .nav-extra a.btn::before,
+    header .nav-links .nav-extra a.btn::after {
+        content: none
+    }
+
+    .nav-wa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px;
+        border-radius: 14px;
+        border: 1px solid #d2a64e66;
+        background: #d2a64e12;
+        color: var(--brass-2);
+        font: 600 15px "IBM Plex Sans Arabic", sans-serif
+    }
+
+    .nav-extra p {
+        margin: 2px 0 0;
+        text-align: center;
+        font-size: 12px;
+        color: var(--soft)
+    }
+}
+
+@media(max-width:860px) and (max-height:700px) {
+    header .nav-links a {
+        padding: 9px 4px;
+        font-size: clamp(28px, 7.6vw, 38px)
+    }
+
+    .nav-extra p {
+        display: none
+    }
+}
+
+/* ---------- الصفحات تبدأ تحت الكبسولة ---------- */
+.hero {
+    padding-top: calc(var(--hh) + 18px)
+}
+
+.mp {
+    padding-top: calc(var(--hh) + 14px)
+}
+
+.pp {
+    padding-top: calc(var(--hh) + 10px)
+}
+
+.mp-aside {
+    top: calc(var(--hh) + 8px)
+}
+
+.pp-media {
+    top: calc(var(--hh) + 12px)
+}
+
+@media(max-width:860px) {
+    .hero {
+        padding-top: calc(var(--hh) + 4px)
+    }
+}
+
+/* ---------- موبايل: مسافات أريح + صورة الـ hero أعلى شوية ---------- */
+@media(max-width:700px) {
+    .hero {
+        padding: calc(var(--hh) - 6px) 0 36px
+    }
+
+    .mp {
+        padding-top: calc(var(--hh) + 4px)
+    }
+
+    .mp-tabs {
+        top: calc(var(--hh) - 8px)
+    }
+
+    .categories,
+    .featured,
+    .golden-banner,
+    .promise,
+    .tracking {
+        padding: 30px 0
+    }
+
+    .section-head {
+        margin-bottom: 18px
+    }
+
+    footer {
+        padding-top: 44px
+    }
+}
+
+@media(max-width:700px) and (max-height:700px) {
+
+    .categories,
+    .featured,
+    .golden-banner,
+    .promise,
+    .tracking {
+        padding: 22px 0
+    }
+
+    .section-head {
+        margin-bottom: 12px
+    }
+}
+
+@keyframes hdFlick {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0)
+    }
+
+    30% {
+        transform: scale(1.1) rotate(-4deg)
+    }
+
+    60% {
+        transform: scale(.95) rotate(3deg)
+    }
+}
+
+@keyframes hdTog {
+    from {
+        opacity: 0;
+        transform: rotate(-90deg) scale(.5)
+    }
+}
+
+@keyframes hdWhere {
+    from {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+}
+
+@keyframes hdFlame {
+
+    0%,
+    100% {
+        opacity: .05;
+        transform: scale(1)
+    }
+
+    50% {
+        opacity: .09;
+        transform: scale(1.05)
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .brand-mark i,
+    .menu-toggle i,
+    .nav-where.swap,
+    header .nav-links::before {
+        animation: none
+    }
+
+    header .nav-links,
+    header .nav-links a,
+    .nav-ind,
+    header .nav-links .nav-extra {
+        transition: none
     }
 }

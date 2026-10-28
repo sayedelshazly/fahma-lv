@@ -876,3 +876,50 @@ onSpy();
     })
 })();
 document.documentElement.classList.add("ready");
+
+/* ==========================================================================
+   HEADER — Ember Capsule behaviour (sliding pill, section label, ember menu)
+   ========================================================================== */
+(()=>{
+const hd=document.querySelector("header"),nav=document.getElementById("navLinks"),tog=document.getElementById("menuToggle"),root=document.documentElement;
+if(!hd||!nav||!tog)return;
+const desk=matchMedia("(min-width:861px)");
+const links=[...nav.querySelectorAll(":scope > a")];
+links.forEach((a,i)=>a.style.setProperty("--i",i));
+const extra=nav.querySelector(".nav-extra");if(extra)extra.style.setProperty("--i",links.length);
+
+/* قرص برتقالي بيتحرك تحت اللينك النشط / اللينك اللي واقف عليه (كمبيوتر) */
+const ind=document.createElement("span");ind.className="nav-ind";ind.setAttribute("aria-hidden","true");nav.prepend(ind);
+const act=()=>links.find(l=>l.classList.contains("active"))||null;
+function under(a){links.forEach(l=>l.classList.toggle("is-under",l===a));if(!a){ind.style.opacity=0;return}ind.style.opacity=1;nav.style.setProperty("--ix",a.offsetLeft+"px");nav.style.setProperty("--iw",a.offsetWidth+"px")}
+const sync=()=>under(act());
+links.forEach(a=>a.addEventListener("pointerenter",()=>{if(desk.matches)under(a)}));
+nav.addEventListener("pointerleave",sync);
+
+/* "أنت فين" تحت اسم البراند (موبايل) */
+const word=hd.querySelector(".brand > span:last-child"),where=document.createElement("small");
+where.className="nav-where";where.setAttribute("aria-live","polite");if(word)word.append(where);
+let last="";
+function label(){const a=act(),t=a?a.textContent.trim():"";if(!t||t===last)return;last=t;where.classList.remove("swap");void where.offsetWidth;where.textContent=t;where.classList.add("swap")}
+let lastActive=act();
+new MutationObserver(()=>{const a=act();if(a!==lastActive){lastActive=a;sync();label()}}).observe(nav,{subtree:true,attributes:true,attributeFilter:["class"]});
+
+/* فتح/قفل القائمة: الدايرة بتتوسّع من مكان الزرار */
+tog.setAttribute("aria-controls","navLinks");
+function closeNav(){if(!nav.classList.contains("open"))return;nav.classList.remove("open");tog.innerHTML='<i class="fa-solid fa-bars"></i>'}
+function onOpen(){const o=nav.classList.contains("open");root.classList.toggle("nav-open",o);tog.setAttribute("aria-expanded",String(o));tog.setAttribute("aria-label",o?"إغلاق القائمة":"فتح القائمة");
+if(o){const r=tog.getBoundingClientRect();nav.style.setProperty("--tx",r.left+r.width/2+"px");nav.style.setProperty("--ty",r.top+r.height/2+"px");setTimeout(()=>{if(nav.classList.contains("open")&&links[0])links[0].focus({preventScroll:true})},450)}}
+new MutationObserver(onOpen).observe(nav,{attributes:true,attributeFilter:["class"]});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&nav.classList.contains("open")){closeNav();tog.focus()}});
+const cartBtn=document.getElementById("openCart");if(cartBtn)cartBtn.addEventListener("click",closeNav);
+nav.querySelectorAll("[data-wa]").forEach(b=>b.addEventListener("click",()=>{closeNav();const w=document.getElementById("whatsappFloat");if(w)w.click()}));
+desk.addEventListener("change",e=>{if(e.matches)closeNav();sync()});
+
+/* تقدّم القراءة */
+let tk=0;
+function onScroll(){if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const max=root.scrollHeight-innerHeight;root.style.setProperty("--sp",max>0?Math.min(1,scrollY/max).toFixed(4):"0")})}
+addEventListener("scroll",onScroll,{passive:true});addEventListener("hashchange",onScroll);
+let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{sync();onScroll()},120)});
+addEventListener("load",sync);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sync);
+sync();label();onOpen();onScroll();
+})();
