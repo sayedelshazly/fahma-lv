@@ -130,12 +130,180 @@ const GOLD = {
     };
 productsData[7].image = GOLD[8];
 productsData[2].image = GOLD[3];
+
+/* ==========================================================================
+   العصائر — بيانات تجريبية: بدّل الأسماء والأسعار والصور ببيانات المطعم الحقيقية.
+   كل عصير بيتحط في نفس قايمة المنتجات بعلامة section:"juices".
+   الصورة هنا رسم كوب بلون الفاكهة؛ لو عندك صورة حقيقية حط رابطها في image بدل art.
+   ========================================================================== */
+const juiceSVG = (c1, c2, kind) => {
+    const garn = {
+        orange: '<circle cx="470" cy="200" r="62" fill="#ff9d2e"/><circle cx="470" cy="200" r="50" fill="#ffc15a"/><g stroke="#fff3d0" stroke-width="3" opacity=".8"><path d="M470 150v100M420 200h100M435 165l70 70M505 165l-70 70"/></g>',
+        lemon: '<circle cx="470" cy="200" r="58" fill="#e8e45a"/><circle cx="470" cy="200" r="47" fill="#f6f2a0"/><g stroke="#fffde0" stroke-width="3"><path d="M470 153v94M423 200h94M437 167l66 66M503 167l-66 66"/></g><path d="M255 215c-30-40-8-80 40-90 10 40-6 76-40 90z" fill="#3fa34d"/><path d="M285 205c-4-34 18-58 56-58 0 34-18 54-56 58z" fill="#58c066"/>',
+        strawberry: '<path d="M470 150c34 0 56 22 52 52-6 36-38 60-52 70-14-10-46-34-52-70-4-30 18-52 52-52z" fill="#ff3d5e"/><g fill="#ffe6a8"><circle cx="450" cy="195" r="4"/><circle cx="480" cy="190" r="4"/><circle cx="465" cy="222" r="4"/><circle cx="492" cy="215" r="4"/></g><path d="M440 150l30 20 30-20-14 26h-32z" fill="#3fa34d"/>',
+        pineapple: '<circle cx="470" cy="210" r="56" fill="#ffd23c"/><circle cx="470" cy="210" r="20" fill="#fff0a0"/><path d="M440 160l30-62 30 62z" fill="#3fa34d"/>',
+        berries: '<circle cx="450" cy="190" r="26" fill="#5a3bd6"/><circle cx="492" cy="205" r="24" fill="#7a4be8"/><circle cx="462" cy="232" r="22" fill="#3b2aa8"/><g fill="#fff" opacity=".35"><circle cx="441" cy="181" r="6"/><circle cx="484" cy="197" r="5"/><circle cx="455" cy="225" r="5"/></g>',
+        mango: '<path d="M420 215c10-50 70-70 110-40-10 56-70 84-110 40z" fill="#ffb02e"/><path d="M432 214c10-34 52-50 84-30" stroke="#ffe3a0" stroke-width="4" fill="none"/>'
+    };
+    return "data:image/svg+xml," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='30 40 640 640'><defs><radialGradient id='b' cx='50%' cy='60%' r='60%'><stop offset='0' stop-color='${c1}' stop-opacity='.35'/><stop offset='1' stop-color='#15110f' stop-opacity='0'/></radialGradient><linearGradient id='j' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='${c1}'/><stop offset='1' stop-color='${c2}'/></linearGradient><clipPath id='g'><path d='M225 210h250l-26 400a30 30 0 0 1-30 28H281a30 30 0 0 1-30-28z'/></clipPath></defs><rect width='700' height='700' fill='#201a17'/><rect width='700' height='700' fill='url(#b)'/><ellipse cx='350' cy='652' rx='170' ry='22' fill='#000' opacity='.45'/><g clip-path='url(#g)'><rect x='200' y='300' width='300' height='360' fill='url(#j)'/><path d='M200 300q37-18 75 0t75 0 75 0 75 0v-24H200z' fill='${c1}' opacity='.9'/><rect x='258' y='330' width='26' height='260' rx='13' fill='#fff' opacity='.18'/><g fill='#fff' opacity='.22'><rect x='300' y='380' width='64' height='64' rx='14' transform='rotate(14 332 412)'/><rect x='372' y='470' width='58' height='58' rx='13' transform='rotate(-12 401 499)'/></g></g><path d='M225 210h250l-26 400a30 30 0 0 1-30 28H281a30 30 0 0 1-30-28z' fill='none' stroke='#ece5d8' stroke-opacity='.45' stroke-width='5'/><rect x='215' y='198' width='270' height='16' rx='8' fill='#ece5d8' opacity='.35'/><g transform='rotate(14 380 160)'><rect x='378' y='70' width='16' height='360' rx='8' fill='#fff'/><g fill='${c2}'><rect x='378' y='96' width='16' height='26'/><rect x='378' y='150' width='16' height='26'/><rect x='378' y='204' width='16' height='26'/></g></g>${garn[kind]}</svg>`)
+};
+const JUICES = [{
+        id: 101,
+        name: "برتقال فريش",
+        category: "fresh",
+        price: 45,
+        tag: "الأكثر طلبًا",
+        badge: "popular",
+        rating: "4.8",
+        time: "3 دقايق",
+        desc: "برتقال معصور مع التلج. بارد ومنعش بعد الشواية.",
+        ingredients: ["برتقال", "تلج"],
+        art: ["#ffa940", "#ff6a1a", "orange"]
+    },
+    {
+        id: 102,
+        name: "مانجو",
+        category: "fresh",
+        price: 55,
+        tag: "فريش",
+        badge: "popular",
+        rating: "4.9",
+        time: "3 دقايق",
+        desc: "عصير مانجو تقيل وناعم، حلو من غير ما يغطي على الأكل.",
+        ingredients: ["مانجو", "تلج"],
+        art: ["#ffd23c", "#ff9d1f", "mango"]
+    },
+    {
+        id: 103,
+        name: "فراولة",
+        category: "fresh",
+        price: 55,
+        tag: "فريش",
+        badge: "new",
+        rating: "4.7",
+        time: "3 دقايق",
+        desc: "فراولة مضروبة مع التلج، لونها وطعمها مظبوطين.",
+        ingredients: ["فراولة", "تلج"],
+        art: ["#ff6b8a", "#d6254f", "strawberry"]
+    },
+    {
+        id: 104,
+        name: "ليمون نعناع",
+        category: "fresh",
+        price: 40,
+        tag: "منعش",
+        badge: "popular",
+        rating: "4.8",
+        time: "3 دقايق",
+        desc: "ليمون ونعناع وتلج. أخف اختيار مع البرجر.",
+        ingredients: ["ليمون", "نعناع", "تلج"],
+        art: ["#e6ef7a", "#8fbf3a", "lemon"]
+    },
+    {
+        id: 105,
+        name: "سموذي مانجو",
+        category: "smoothie",
+        price: 65,
+        tag: "جديد",
+        badge: "new",
+        rating: "4.8",
+        time: "4 دقايق",
+        desc: "مانجو مخفوقة مع الزبادي، تقيلة ومشبّعة.",
+        ingredients: ["مانجو", "زبادي", "تلج"],
+        art: ["#ffc247", "#f58a1f", "mango"]
+    },
+    {
+        id: 106,
+        name: "سموذي فراولة وموز",
+        category: "smoothie",
+        price: 65,
+        tag: "جديد",
+        badge: "new",
+        rating: "4.7",
+        time: "4 دقايق",
+        desc: "فراولة وموز مع الزبادي في كوباية واحدة.",
+        ingredients: ["فراولة", "موز", "زبادي"],
+        art: ["#ffb3c1", "#ff6b8a", "strawberry"]
+    },
+    {
+        id: 107,
+        name: "كوكتيل فحمة",
+        category: "cocktail",
+        price: 75,
+        tag: "توقيع فحمة",
+        badge: "popular",
+        rating: "4.9",
+        time: "4 دقايق",
+        desc: "مزيج التوت والبرتقال والليمون، لونه غامق وطعمه منعش.",
+        ingredients: ["توت", "برتقال", "ليمون"],
+        art: ["#8b5cf6", "#ff5a26", "berries"]
+    },
+    {
+        id: 108,
+        name: "أناناس جوز هند",
+        category: "cocktail",
+        price: 70,
+        tag: "جديد",
+        badge: "new",
+        rating: "4.6",
+        time: "4 دقايق",
+        desc: "أناناس مع جوز الهند، استوائي وتقيل شوية.",
+        ingredients: ["أناناس", "جوز هند", "تلج"],
+        art: ["#fff2a8", "#ffd23c", "pineapple"]
+    }
+];
+JUICES.forEach(j => {
+    j.section = "juices";
+    j.image = juiceSVG(...j.art);
+    delete j.art
+});
+productsData.push(...JUICES);
 const DELIVERY_FEE = 25;
 const CAT_AR = {
     beef: "بيف برجر",
     chicken: "تشيكن كرنشي",
     sides: "سايدز",
     gold: "Golden Meals"
+};
+
+const JUICE_CAT = {
+    fresh: "عصير فريش",
+    smoothie: "سموذي",
+    cocktail: "كوكتيل"
+};
+const CAT_ALL = {
+    ...CAT_AR,
+    ...JUICE_CAT
+};
+const CARD_LABEL = {
+    beef: "بيف برجر",
+    chicken: "تشيكن",
+    gold: "Golden",
+    sides: "سايدز",
+    fresh: "فريش",
+    smoothie: "سموذي",
+    cocktail: "كوكتيل"
+};
+const sec = p => p.section || "menu"; // المنتج من أي صفحة: menu أو juices
+const CATALOGS = {
+    menu: {
+        cats: CAT_AR,
+        title: "المنيو",
+        all: "كل المنيو",
+        crumb: "المنيو",
+        search: "دور في المنيو",
+        sort: "ترتيب الوجبات",
+        doc: "المنيو — فحمة"
+    },
+    juices: {
+        cats: JUICE_CAT,
+        title: "العصائر",
+        all: "كل العصائر",
+        crumb: "العصائر",
+        search: "دور في العصائر",
+        sort: "ترتيب العصائر",
+        doc: "العصائر — فحمة"
+    }
 };
 const esc = v => String(v).replace(/[&<>"']/g, c => ({
     "&": "&amp;",
@@ -177,7 +345,9 @@ function loadCart() {
 }
 const favs = new Set((loadJSON("localStorage", "fahmaFavs", []) || []).filter(Number.isInteger));
 const cartSubtotal = () => cart.reduce((s, x) => s + productsData.find(p => p.id === x.id).price * x.qty, 0);
-let activeCategory = "all",
+let activeCatalog = "menu",
+    tabsFor = null,
+    activeCategory = "all",
     activeFilter = "popular",
     searchTerm = "",
     cart = loadCart();
@@ -186,11 +356,11 @@ const $ = s => document.querySelector(s),
 const money = n => `${n.toLocaleString("en-US")} ج.م`;
 
 function productCard(p, i) {
-    return `<article class="product-card ${p.golden?"golden":""}" style="animation-delay:${Math.min(i*60,300)}ms" ><div class="product-image"><img loading="lazy" src="${p.image}" alt="" onerror="this.src='https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&auto=format&fit=crop&q=80'"><span class="product-tag">${p.tag}</span><button class="fav${favs.has(p.id)?" liked":""}" aria-pressed="${favs.has(p.id)}" aria-label="المفضلة: ${p.name}" onclick="toggleFav(this,${p.id})"><i class="fa-${favs.has(p.id)?"solid":"regular"} fa-heart"></i></button></div><div class="product-info"><div class="product-meta"><span>${p.category==="beef"?"بيف برجر":p.category==="chicken"?"تشيكن":p.category==="gold"?"Golden":"سايدز"}</span><span style="display:flex;gap:12px;align-items:center"><span class="rating">★ ${p.rating}</span><span><i class="fa-regular fa-clock"></i> ${p.time}</span></span></div><h3><a class="card-link" href="#/product/${p.id}" onclick="event.preventDefault();goProduct(${p.id})">${p.name}</a></h3><p>${p.desc}</p><div class="product-bottom"><span class="price">${p.price}<small>ج.م</small></span><button class="add-btn" aria-label="أضف ${p.name} للسلة" onclick="quickAdd(${p.id})"><i class="fa-solid fa-plus"></i></button></div></div></article>`
+    return `<article class="product-card ${p.golden?"golden":""}" style="animation-delay:${Math.min(i*60,300)}ms" ><div class="product-image"><img loading="lazy" src="${p.image}" alt="" onerror="this.src='https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&auto=format&fit=crop&q=80'"><span class="product-tag">${p.tag}</span><button class="fav${favs.has(p.id)?" liked":""}" aria-pressed="${favs.has(p.id)}" aria-label="المفضلة: ${p.name}" onclick="toggleFav(this,${p.id})"><i class="fa-${favs.has(p.id)?"solid":"regular"} fa-heart"></i></button></div><div class="product-info"><div class="product-meta"><span>${CARD_LABEL[p.category]||""}</span><span style="display:flex;gap:12px;align-items:center"><span class="rating">★ ${p.rating}</span><span><i class="fa-regular fa-clock"></i> ${p.time}</span></span></div><h3><a class="card-link" href="#/product/${p.id}" onclick="event.preventDefault();goProduct(${p.id})">${p.name}</a></h3><p>${p.desc}</p><div class="product-bottom"><span class="price">${p.price}<small>ج.م</small></span><button class="add-btn" aria-label="أضف ${p.name} للسلة" onclick="quickAdd(${p.id})"><i class="fa-solid fa-plus"></i></button></div></div></article>`
 }
 
 function renderProducts() {
-    let list = productsData.filter(p => (activeCategory === "all" || p.category === activeCategory) && (searchTerm === "" || norm(p.name + " " + p.desc + " " + p.ingredients.join(" ") + " " + CAT_AR[p.category] + " " + p.tag).includes(norm(searchTerm))));
+    let list = productsData.filter(p => sec(p) === activeCatalog && (activeCategory === "all" || p.category === activeCategory) && (searchTerm === "" || norm(p.name + " " + p.desc + " " + p.ingredients.join(" ") + " " + CAT_ALL[p.category] + " " + p.tag).includes(norm(searchTerm))));
     if (activeFilter === "popular") list.sort((a, b) => (b.badge === "popular") - (a.badge === "popular"));
     if (activeFilter === "new") list.sort((a, b) => (b.badge === "new") - (a.badge === "new"));
     if (activeFilter === "price") list.sort((a, b) => a.price - b.price);
@@ -555,12 +725,15 @@ const EXTRA = {
         s: 0
     }
 };
-const CAT = CAT_AR;
+const CAT = CAT_ALL;
 const COMP = {
     beef: ["sides", "chicken", "gold"],
     chicken: ["sides", "beef", "gold"],
     sides: ["beef", "chicken", "gold"],
-    gold: ["sides", "gold", "beef"]
+    gold: ["sides", "gold", "beef"],
+    fresh: ["smoothie", "cocktail", "fresh"],
+    smoothie: ["fresh", "cocktail", "smoothie"],
+    cocktail: ["fresh", "smoothie", "cocktail"]
 };
 const baseTitle = document.title,
     P = id => productsData.find(p => p.id === +id),
@@ -573,12 +746,14 @@ let restoreY = null,
     gxId = 8;
 
 function recommend(baseIds, n = 3) {
-    const cats = baseIds.map(P).filter(Boolean).map(p => p.category),
+    const base = baseIds.map(P).filter(Boolean),
+        cats = base.map(p => p.category),
+        secs = new Set(base.map(sec)),
         hasSide = cats.includes("sides");
-    return productsData.filter(p => !baseIds.includes(p.id)).map(p => {
+    return productsData.filter(p => !baseIds.includes(p.id) && (!secs.size || secs.has(sec(p)))).map(p => {
         let s = 0;
         cats.forEach(c => {
-            const i = COMP[c].indexOf(p.category);
+            const i = (COMP[c] || []).indexOf(p.category);
             if (i > -1) s = Math.max(s, 3 - i)
         });
         if (p.category === "sides" && !hasSide) s += 2;
@@ -613,7 +788,7 @@ function goProduct(id) {
 
 function goBack() {
     if (inApp) history.back();
-    else location.hash = "#/menu"
+    else location.hash = "#/" + (curPP && sec(curPP) === "juices" ? "juices" : "menu")
 }
 
 function ppQty(d) {
@@ -630,12 +805,12 @@ function renderPP(p) {
         c = CAT[p.category],
         tile = (i, l, v) => `<div><i class="${i}"></i><small>${l}</small><strong>${v}</strong></div>`,
         specs = tile("fa-regular fa-clock", "وقت التحضير", p.time) + tile("fa-solid fa-star", "التقييم", p.rating) + tile("fa-solid fa-utensils", "القسم", c) + (SHOW_NUTRITION && x.cal ? tile("fa-solid fa-weight-scale", "الوزن", x.g + " جم") + tile("fa-solid fa-fire-flame-simple", "السعرات", x.cal + " kcal") + tile("fa-solid fa-pepper-hot", "الحدة", sp) : "");
-    $("#productPage").innerHTML = `<div class="wrap pp-wrap${p.golden?" golden":""}"><div class="pp-top"><button class="btn btn-outline" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> رجوع</button><span>المنيو / ${c}</span></div>
+    $("#productPage").innerHTML = `<div class="wrap pp-wrap${p.golden?" golden":""}"><div class="pp-top"><button class="btn btn-outline" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> رجوع</button><span>${CATALOGS[sec(p)].crumb} / ${c}</span></div>
 <div class="pp-grid"><div class="pp-media"${GXR[p.id]?` style="aspect-ratio:${GXR[p.id]}"`:""}><img src="${big(p)}" alt="${p.name}" onerror="imgFail(this)"><span class="product-tag">${p.tag}</span></div>
 <div class="pp-info"><span class="pp-cat">${c}</span><h1>${p.name}</h1><div class="pp-meta"><span class="rating">★ ${p.rating}</span><span><i class="fa-regular fa-clock"></i> ${p.time}</span></div><p class="pp-desc">${p.desc}</p>
 <div class="pp-specs">${specs}</div>\n<div><h3>المكونات</h3><div class="ingredients">${p.ingredients.map(i=>`<span>${i}</span>`).join("")}</div></div>
 <div class="pp-buy"><div class="pp-price"><small>السعر</small><strong id="ppTotal">${money(p.price)}</strong></div><div class="qty"><button onclick="ppQty(-1)" aria-label="تقليل الكمية">−</button><span id="ppQ">1</span><button onclick="ppQty(1)" aria-label="زيادة الكمية">+</button></div><button class="btn btn-orange" id="ppAdd">أضف للسلة <i class="fa-solid fa-bag-shopping"></i></button></div></div></div>
-<section class="pp-recs"><h2>كمّل وجبتك</h2><div class="pp-recgrid">${recommend([p.id],3).map(r=>recCard(r,"page")).join("")}</div></section></div>`;
+<section class="pp-recs"><h2>${sec(p)==="juices"?"عصائر تانية تعجبك":"كمّل وجبتك"}</h2><div class="pp-recgrid">${recommend([p.id],3).map(r=>recCard(r,"page")).join("")}</div></section></div>`;
     $$(".pp-info>*").forEach((e, i) => e.style.animationDelay = i * 60 + "ms");
     $("#ppAdd").onclick = () => {
         addToCart(p.id, ppq);
@@ -643,19 +818,19 @@ function renderPP(p) {
     }
 }
 
-function show(v) {
+function show(v, nav) {
     document.body.dataset.view = v;
     $("main").hidden = v !== "home";
     $("#menuPage").hidden = v !== "menu";
     $("#productPage").hidden = v !== "product";
     document.body.classList.toggle("on-product", v === "product");
-    $$(".nav-links a").forEach(a => a.classList.toggle("active", v !== "home" ? a.getAttribute("href") === "#/menu" : a.getAttribute("href") === "#home"))
+    $$(".nav-links a").forEach(a => a.classList.toggle("active", v !== "home" ? a.getAttribute("href") === (nav || "#/menu") : a.getAttribute("href") === "#home"))
 }
 
 function route() {
     const h = location.hash,
         pm = h.match(/^#\/product\/(\d+)$/),
-        mm = h.match(/^#\/menu(?:\/(\w+))?$/),
+        mm = h.match(/^#\/(menu|juices)(?:\/(\w+))?$/),
         p = pm && P(pm[1]),
         was = document.body.dataset.view || "home",
         top = () => scrollTo({
@@ -664,7 +839,7 @@ function route() {
         });
     if (p) {
         renderPP(p);
-        show("product");
+        show("product", sec(p) === "juices" ? "#/juices" : "#/menu");
         document.title = `${p.name} — فحمة`;
         top();
         navClicked = false;
@@ -676,15 +851,21 @@ function route() {
         return
     }
     if (mm) {
-        activeCategory = CAT_AR[mm[1]] ? mm[1] : "all";
-        show("menu");
-        document.title = "المنيو — فحمة";
+        const prevCat = activeCatalog;
+        activeCatalog = mm[1];
+        activeCategory = CATALOGS[activeCatalog].cats[mm[2]] ? mm[2] : "all";
+        if (prevCat !== activeCatalog) {
+            searchTerm = "";
+            $("#searchInput").value = ""
+        }
+        show("menu", "#/" + activeCatalog);
+        document.title = CATALOGS[activeCatalog].doc;
         renderMenuPage();
         if (was === "product" && restoreY != null) scrollTo({
             top: restoreY,
             behavior: "instant"
         });
-        else if (was !== "menu") {
+        else if (was !== "menu" || prevCat !== activeCatalog) {
             top();
             const t = $("#mpTitle");
             t.tabIndex = -1;
@@ -766,14 +947,20 @@ function imgFail(img) {
     img.dataset.f = n + 1;
     img.src = FB_IMGS[n] || FB_SVG
 }
-const spy = [...$$(".nav-links a")].map(a => [a, document.getElementById(a.getAttribute("href").slice(1))]).filter(x => x[1]);
+const SPY_TARGET = {
+    "#/juices": "juices-sec"
+}; // قسم العصائر في الرئيسية بيفعّل رابط العصائر
+const spy = [...$$(".nav-links a")].map(a => {
+    const h = a.getAttribute("href");
+    return [a, document.getElementById(SPY_TARGET[h] || h.slice(1))]
+}).filter(x => x[1]);
 
 function onSpy() {
     if (document.body.dataset.view && document.body.dataset.view !== "home") return;
     let cur = spy[0];
     const y = scrollY + 130;
     spy.forEach(x => {
-        if (x[1].offsetTop <= y) cur = x
+        if (x[1].offsetTop <= y && x[1].offsetTop >= cur[1].offsetTop) cur = x
     });
     spy.forEach(x => x[0].classList.toggle("active", x === cur))
 }
@@ -792,9 +979,11 @@ addEventListener("scroll", () => {
 onSpy();
 /* ---- menu page, featured meals, side cart ---- */
 function renderTabs() {
+    const c = CATALOGS[activeCatalog];
     $("#mpTabs").innerHTML = [
-        ["all", "كل المنيو"], ...Object.entries(CAT_AR)
-    ].map(([k, l]) => `<a class="mp-tab" data-c="${k}" href="#/menu${k==="all"?"":"/"+k}" onclick="event.preventDefault();location.replace(this.getAttribute('href'))">${l}<small>${k==="all"?productsData.length:productsData.filter(p=>p.category===k).length}</small></a>`).join("")
+        ["all", c.all], ...Object.entries(c.cats)
+    ].map(([k, l]) => `<a class="mp-tab" data-c="${k}" href="#/${activeCatalog}${k==="all"?"":"/"+k}" onclick="event.preventDefault();location.replace(this.getAttribute('href'))">${l}<small>${productsData.filter(p=>sec(p)===activeCatalog&&(k==="all"||p.category===k)).length}</small></a>`).join("");
+    tabsFor = activeCatalog
 }
 
 function syncTabs() {
@@ -812,15 +1001,29 @@ function syncTabs() {
 }
 
 function renderMenuPage() {
+    const c = CATALOGS[activeCatalog];
+    document.body.dataset.catalog = activeCatalog;
+    if (tabsFor !== activeCatalog) renderTabs();
+    $("#mpTitle").textContent = c.title;
+    $("#mpCrumb").textContent = c.crumb;
+    $("#mpTabs").setAttribute("aria-label", "أقسام " + c.title);
+    $("#searchInput").setAttribute("aria-label", c.search);
+    $("#sortSelect").setAttribute("aria-label", c.sort);
     syncTabs();
     $("#sortSelect").value = activeFilter;
     renderProducts()
 }
 
 function renderFeatured() {
-    const pop = productsData.filter(p => p.badge === "popular"),
-        rest = productsData.filter(p => p.badge !== "popular" && p.category !== "sides");
+    const pop = productsData.filter(p => p.badge === "popular" && sec(p) === "menu"),
+        rest = productsData.filter(p => p.badge !== "popular" && p.category !== "sides" && sec(p) === "menu");
     $("#featured").innerHTML = [...pop, ...rest].slice(0, 3).map(productCard).join("")
+}
+
+function renderFeaturedJuices() {
+    const all = productsData.filter(p => sec(p) === "juices"),
+        pop = all.filter(p => p.badge === "popular");
+    $("#featuredJuices").innerHTML = [...pop, ...all.filter(p => p.badge !== "popular")].slice(0, 3).map(productCard).join("")
 }
 
 function renderAside() {
@@ -849,6 +1052,7 @@ $("#goldenExplore").addEventListener("click", () => {
 window.onSpyHook = onSpy;
 renderTabs();
 renderFeatured();
+renderFeaturedJuices();
 watchCards();
 renderAside();
 syncTabs();
@@ -880,46 +1084,147 @@ document.documentElement.classList.add("ready");
 /* ==========================================================================
    HEADER — Ember Capsule behaviour (sliding pill, section label, ember menu)
    ========================================================================== */
-(()=>{
-const hd=document.querySelector("header"),nav=document.getElementById("navLinks"),tog=document.getElementById("menuToggle"),root=document.documentElement;
-if(!hd||!nav||!tog)return;
-const desk=matchMedia("(min-width:861px)");
-const links=[...nav.querySelectorAll(":scope > a")];
-links.forEach((a,i)=>a.style.setProperty("--i",i));
-const extra=nav.querySelector(".nav-extra");if(extra)extra.style.setProperty("--i",links.length);
+(() => {
+    const hd = document.querySelector("header"),
+        nav = document.getElementById("navLinks"),
+        tog = document.getElementById("menuToggle"),
+        root = document.documentElement;
+    if (!hd || !nav || !tog) return;
+    const desk = matchMedia("(min-width:861px)");
+    const links = [...nav.querySelectorAll(":scope > a")];
+    links.forEach((a, i) => a.style.setProperty("--i", i));
+    const extra = nav.querySelector(".nav-extra");
+    if (extra) extra.style.setProperty("--i", links.length);
 
-/* قرص برتقالي بيتحرك تحت اللينك النشط / اللينك اللي واقف عليه (كمبيوتر) */
-const ind=document.createElement("span");ind.className="nav-ind";ind.setAttribute("aria-hidden","true");nav.prepend(ind);
-const act=()=>links.find(l=>l.classList.contains("active"))||null;
-function under(a){links.forEach(l=>l.classList.toggle("is-under",l===a));if(!a){ind.style.opacity=0;return}ind.style.opacity=1;nav.style.setProperty("--ix",a.offsetLeft+"px");nav.style.setProperty("--iw",a.offsetWidth+"px")}
-const sync=()=>under(act());
-links.forEach(a=>a.addEventListener("pointerenter",()=>{if(desk.matches)under(a)}));
-nav.addEventListener("pointerleave",sync);
+    /* قرص برتقالي بيتحرك تحت اللينك النشط / اللينك اللي واقف عليه (كمبيوتر) */
+    const ind = document.createElement("span");
+    ind.className = "nav-ind";
+    ind.setAttribute("aria-hidden", "true");
+    nav.prepend(ind);
+    const act = () => links.find(l => l.classList.contains("active")) || null;
 
-/* "أنت فين" تحت اسم البراند (موبايل) */
-const word=hd.querySelector(".brand > span:last-child"),where=document.createElement("small");
-where.className="nav-where";where.setAttribute("aria-live","polite");if(word)word.append(where);
-let last="";
-function label(){const a=act(),t=a?a.textContent.trim():"";if(!t||t===last)return;last=t;where.classList.remove("swap");void where.offsetWidth;where.textContent=t;where.classList.add("swap")}
-let lastActive=act();
-new MutationObserver(()=>{const a=act();if(a!==lastActive){lastActive=a;sync();label()}}).observe(nav,{subtree:true,attributes:true,attributeFilter:["class"]});
+    function under(a) {
+        links.forEach(l => l.classList.toggle("is-under", l === a));
+        if (!a) {
+            ind.style.opacity = 0;
+            return
+        }
+        ind.style.opacity = 1;
+        nav.style.setProperty("--ix", a.offsetLeft + "px");
+        nav.style.setProperty("--iw", a.offsetWidth + "px")
+    }
+    const sync = () => under(act());
+    links.forEach(a => a.addEventListener("pointerenter", () => {
+        if (desk.matches) under(a)
+    }));
+    nav.addEventListener("pointerleave", sync);
 
-/* فتح/قفل القائمة: الدايرة بتتوسّع من مكان الزرار */
-tog.setAttribute("aria-controls","navLinks");
-function closeNav(){if(!nav.classList.contains("open"))return;nav.classList.remove("open");tog.innerHTML='<i class="fa-solid fa-bars"></i>'}
-function onOpen(){const o=nav.classList.contains("open");root.classList.toggle("nav-open",o);tog.setAttribute("aria-expanded",String(o));tog.setAttribute("aria-label",o?"إغلاق القائمة":"فتح القائمة");
-if(o){const r=tog.getBoundingClientRect();nav.style.setProperty("--tx",r.left+r.width/2+"px");nav.style.setProperty("--ty",r.top+r.height/2+"px");setTimeout(()=>{if(nav.classList.contains("open")&&links[0])links[0].focus({preventScroll:true})},450)}}
-new MutationObserver(onOpen).observe(nav,{attributes:true,attributeFilter:["class"]});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&nav.classList.contains("open")){closeNav();tog.focus()}});
-const cartBtn=document.getElementById("openCart");if(cartBtn)cartBtn.addEventListener("click",closeNav);
-nav.querySelectorAll("[data-wa]").forEach(b=>b.addEventListener("click",()=>{closeNav();const w=document.getElementById("whatsappFloat");if(w)w.click()}));
-desk.addEventListener("change",e=>{if(e.matches)closeNav();sync()});
+    /* "أنت فين" تحت اسم البراند (موبايل) */
+    const word = hd.querySelector(".brand > span:last-child"),
+        where = document.createElement("small");
+    where.className = "nav-where";
+    where.setAttribute("aria-live", "polite");
+    if (word) word.append(where);
+    let last = "";
 
-/* تقدّم القراءة */
-let tk=0;
-function onScroll(){if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const max=root.scrollHeight-innerHeight;root.style.setProperty("--sp",max>0?Math.min(1,scrollY/max).toFixed(4):"0")})}
-addEventListener("scroll",onScroll,{passive:true});addEventListener("hashchange",onScroll);
-let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{sync();onScroll()},120)});
-addEventListener("load",sync);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sync);
-sync();label();onOpen();onScroll();
+    function label() {
+        const a = act(),
+            t = a ? a.textContent.trim() : "";
+        if (!t || t === last) return;
+        last = t;
+        where.classList.remove("swap");
+        void where.offsetWidth;
+        where.textContent = t;
+        where.classList.add("swap")
+    }
+    let lastActive = act();
+    new MutationObserver(() => {
+        const a = act();
+        if (a !== lastActive) {
+            lastActive = a;
+            sync();
+            label()
+        }
+    }).observe(nav, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class"]
+    });
+
+    /* فتح/قفل القائمة: الدايرة بتتوسّع من مكان الزرار */
+    tog.setAttribute("aria-controls", "navLinks");
+
+    function closeNav() {
+        if (!nav.classList.contains("open")) return;
+        nav.classList.remove("open");
+        tog.innerHTML = '<i class="fa-solid fa-bars"></i>'
+    }
+
+    function onOpen() {
+        const o = nav.classList.contains("open");
+        root.classList.toggle("nav-open", o);
+        tog.setAttribute("aria-expanded", String(o));
+        tog.setAttribute("aria-label", o ? "إغلاق القائمة" : "فتح القائمة");
+        if (o) {
+            const r = tog.getBoundingClientRect();
+            nav.style.setProperty("--tx", r.left + r.width / 2 + "px");
+            nav.style.setProperty("--ty", r.top + r.height / 2 + "px");
+            setTimeout(() => {
+                if (nav.classList.contains("open") && links[0]) links[0].focus({
+                    preventScroll: true
+                })
+            }, 450)
+        }
+    }
+    new MutationObserver(onOpen).observe(nav, {
+        attributes: true,
+        attributeFilter: ["class"]
+    });
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && nav.classList.contains("open")) {
+            closeNav();
+            tog.focus()
+        }
+    });
+    const cartBtn = document.getElementById("openCart");
+    if (cartBtn) cartBtn.addEventListener("click", closeNav);
+    nav.querySelectorAll("[data-wa]").forEach(b => b.addEventListener("click", () => {
+        closeNav();
+        const w = document.getElementById("whatsappFloat");
+        if (w) w.click()
+    }));
+    desk.addEventListener("change", e => {
+        if (e.matches) closeNav();
+        sync()
+    });
+
+    /* تقدّم القراءة */
+    let tk = 0;
+
+    function onScroll() {
+        if (tk) return;
+        tk = requestAnimationFrame(() => {
+            tk = 0;
+            const max = root.scrollHeight - innerHeight;
+            root.style.setProperty("--sp", max > 0 ? Math.min(1, scrollY / max).toFixed(4) : "0")
+        })
+    }
+    addEventListener("scroll", onScroll, {
+        passive: true
+    });
+    addEventListener("hashchange", onScroll);
+    let rt;
+    addEventListener("resize", () => {
+        clearTimeout(rt);
+        rt = setTimeout(() => {
+            sync();
+            onScroll()
+        }, 120)
+    });
+    addEventListener("load", sync);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+    sync();
+    label();
+    onOpen();
+    onScroll();
 })();
