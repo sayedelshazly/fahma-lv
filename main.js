@@ -1,5 +1,5 @@
 if (window.__plActive && window.gsap) gsap.globalTimeline.pause(); // يبدأ تحريك الصفحة بعد انتهاء الـ preloader
-const WHATSAPP_NUMBER = "201000000000"; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
+const WHATSAPP_NUMBER = "201099687091 "; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
 const productsData = [{
         id: 1,
         name: "فحمة كلاسيك",
