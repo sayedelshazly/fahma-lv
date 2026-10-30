@@ -1,5 +1,5 @@
 if (window.__plActive && window.gsap) gsap.globalTimeline.pause(); // يبدأ تحريك الصفحة بعد انتهاء الـ preloader
-const WHATSAPP_NUMBER = "201099687091 "; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
+const WHATSAPP_NUMBER = "201099687091"; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
 const productsData = [{
         id: 1,
         name: "فحمة كلاسيك",
@@ -145,7 +145,7 @@ const juiceSVG = (c1, c2, kind) => {
         berries: '<circle cx="450" cy="190" r="26" fill="#5a3bd6"/><circle cx="492" cy="205" r="24" fill="#7a4be8"/><circle cx="462" cy="232" r="22" fill="#3b2aa8"/><g fill="#fff" opacity=".35"><circle cx="441" cy="181" r="6"/><circle cx="484" cy="197" r="5"/><circle cx="455" cy="225" r="5"/></g>',
         mango: '<path d="M420 215c10-50 70-70 110-40-10 56-70 84-110 40z" fill="#ffb02e"/><path d="M432 214c10-34 52-50 84-30" stroke="#ffe3a0" stroke-width="4" fill="none"/>'
     };
-    return "data:image/svg+xml," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='30 40 640 640'><defs><radialGradient id='b' cx='50%' cy='60%' r='60%'><stop offset='0' stop-color='${c1}' stop-opacity='.35'/><stop offset='1' stop-color='#15110f' stop-opacity='0'/></radialGradient><linearGradient id='j' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='${c1}'/><stop offset='1' stop-color='${c2}'/></linearGradient><clipPath id='g'><path d='M225 210h250l-26 400a30 30 0 0 1-30 28H281a30 30 0 0 1-30-28z'/></clipPath></defs><rect width='700' height='700' fill='#201a17'/><rect width='700' height='700' fill='url(#b)'/><ellipse cx='350' cy='652' rx='170' ry='22' fill='#000' opacity='.45'/><g clip-path='url(#g)'><rect x='200' y='300' width='300' height='360' fill='url(#j)'/><path d='M200 300q37-18 75 0t75 0 75 0 75 0v-24H200z' fill='${c1}' opacity='.9'/><rect x='258' y='330' width='26' height='260' rx='13' fill='#fff' opacity='.18'/><g fill='#fff' opacity='.22'><rect x='300' y='380' width='64' height='64' rx='14' transform='rotate(14 332 412)'/><rect x='372' y='470' width='58' height='58' rx='13' transform='rotate(-12 401 499)'/></g></g><path d='M225 210h250l-26 400a30 30 0 0 1-30 28H281a30 30 0 0 1-30-28z' fill='none' stroke='#ece5d8' stroke-opacity='.45' stroke-width='5'/><rect x='215' y='198' width='270' height='16' rx='8' fill='#ece5d8' opacity='.35'/><g transform='rotate(14 380 160)'><rect x='378' y='70' width='16' height='360' rx='8' fill='#fff'/><g fill='${c2}'><rect x='378' y='96' width='16' height='26'/><rect x='378' y='150' width='16' height='26'/><rect x='378' y='204' width='16' height='26'/></g></g>${garn[kind]}</svg>`)
+    return "data:image/svg+xml," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='30 40 640 640'><defs><radialGradient id='b' cx='50%' cy='60%' r='60%'><stop offset='0' stop-color='${c1}' stop-opacity='.35'/><stop offset='1' stop-color='${c1}' stop-opacity='0'/></radialGradient><linearGradient id='j' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='${c1}'/><stop offset='1' stop-color='${c2}'/></linearGradient><clipPath id='g'><path d='M225 210h250l-26 400a30 30 0 0 1-30 28H281a30 30 0 0 1-30-28z'/></clipPath></defs><rect width='700' height='700' fill='url(#b)'/><ellipse cx='350' cy='652' rx='170' ry='22' fill='#000' opacity='.45'/><g clip-path='url(#g)'><rect x='200' y='300' width='300' height='360' fill='url(#j)'/><path d='M200 300q37-18 75 0t75 0 75 0 75 0v-24H200z' fill='${c1}' opacity='.9'/><rect x='258' y='330' width='26' height='260' rx='13' fill='#fff' opacity='.18'/><g fill='#fff' opacity='.22'><rect x='300' y='380' width='64' height='64' rx='14' transform='rotate(14 332 412)'/><rect x='372' y='470' width='58' height='58' rx='13' transform='rotate(-12 401 499)'/></g></g><path d='M225 210h250l-26 400a30 30 0 0 1-30 28H281a30 30 0 0 1-30-28z' fill='none' stroke='#ece5d8' stroke-opacity='.45' stroke-width='5'/><rect x='215' y='198' width='270' height='16' rx='8' fill='#ece5d8' opacity='.35'/><g transform='rotate(14 380 160)'><rect x='378' y='70' width='16' height='360' rx='8' fill='#fff'/><g fill='${c2}'><rect x='378' y='96' width='16' height='26'/><rect x='378' y='150' width='16' height='26'/><rect x='378' y='204' width='16' height='26'/></g></g>${garn[kind]}</svg>`)
 };
 const JUICES = [{
         id: 101,
@@ -254,6 +254,7 @@ const JUICES = [{
 ];
 JUICES.forEach(j => {
     j.section = "juices";
+    j.glow = j.art[0] + "66"; // وهج الكارت بلون الفاكهة
     j.image = juiceSVG(...j.art);
     delete j.art
 });
@@ -356,7 +357,7 @@ const $ = s => document.querySelector(s),
 const money = n => `${n.toLocaleString("en-US")} ج.م`;
 
 function productCard(p, i) {
-    return `<article class="product-card ${p.golden?"golden":""}" style="animation-delay:${Math.min(i*60,300)}ms" ><div class="product-image"><img loading="lazy" src="${p.image}" alt="" onerror="this.src='https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&auto=format&fit=crop&q=80'"><span class="product-tag">${p.tag}</span><button class="fav${favs.has(p.id)?" liked":""}" aria-pressed="${favs.has(p.id)}" aria-label="المفضلة: ${p.name}" onclick="toggleFav(this,${p.id})"><i class="fa-${favs.has(p.id)?"solid":"regular"} fa-heart"></i></button></div><div class="product-info"><div class="product-meta"><span>${CARD_LABEL[p.category]||""}</span><span style="display:flex;gap:12px;align-items:center"><span class="rating">★ ${p.rating}</span><span><i class="fa-regular fa-clock"></i> ${p.time}</span></span></div><h3><a class="card-link" href="#/product/${p.id}" onclick="event.preventDefault();goProduct(${p.id})">${p.name}</a></h3><p>${p.desc}</p><div class="product-bottom"><span class="price">${p.price}<small>ج.م</small></span><button class="add-btn" aria-label="أضف ${p.name} للسلة" onclick="quickAdd(${p.id})"><i class="fa-solid fa-plus"></i></button></div></div></article>`
+    return `<article class="product-card ${p.golden?"golden":""}" style="animation-delay:${Math.min(i*60,300)}ms;--glow:${p.glow||"transparent"}" ><div class="product-image"><img loading="lazy" src="${p.image}" alt="" onerror="this.src='https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&auto=format&fit=crop&q=80'"><span class="product-tag">${p.tag}</span><button class="fav${favs.has(p.id)?" liked":""}" aria-pressed="${favs.has(p.id)}" aria-label="المفضلة: ${p.name}" onclick="toggleFav(this,${p.id})"><i class="fa-${favs.has(p.id)?"solid":"regular"} fa-heart"></i></button></div><div class="product-info"><div class="product-meta"><span>${CARD_LABEL[p.category]||""}</span><span style="display:flex;gap:12px;align-items:center"><span class="rating">★ ${p.rating}</span><span><i class="fa-regular fa-clock"></i> ${p.time}</span></span></div><h3><a class="card-link" href="#/product/${p.id}" onclick="event.preventDefault();goProduct(${p.id})">${p.name}</a></h3><p>${p.desc}</p><div class="product-bottom"><span class="price">${p.price}<small>ج.م</small></span><button class="add-btn" aria-label="أضف ${p.name} للسلة" onclick="quickAdd(${p.id})"><i class="fa-solid fa-plus"></i></button></div></div></article>`
 }
 
 function renderProducts() {
@@ -824,6 +825,8 @@ function show(v, nav) {
     $("#menuPage").hidden = v !== "menu";
     $("#productPage").hidden = v !== "product";
     document.body.classList.toggle("on-product", v === "product");
+    if (v !== "home" && nav === "#/juices") document.body.dataset.theme = "cool"; // ثيم العصائر البارد
+    else delete document.body.dataset.theme;
     $$(".nav-links a").forEach(a => a.classList.toggle("active", v !== "home" ? a.getAttribute("href") === (nav || "#/menu") : a.getAttribute("href") === "#home"))
 }
 

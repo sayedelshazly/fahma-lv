@@ -163,7 +163,9 @@ a {
     display: grid;
     place-items: center;
     padding: 0 4px
-}.brand {
+}
+
+.brand {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -190,7 +192,9 @@ a {
     letter-spacing: 3px;
     color: #aaa69b;
     margin-top: 1px
-}.hero {
+}
+
+.hero {
     background: var(--ink);
     color: var(--cream);
     position: relative;
@@ -1311,7 +1315,8 @@ footer {
     }
 }
 
-@media(max-width:980px) {    .hero-grid {
+@media(max-width:980px) {
+    .hero-grid {
         grid-template-columns: 1fr 1fr;
         gap: 0
     }
@@ -1344,9 +1349,13 @@ footer {
 @media(max-width:700px) {
     .wrap {
         width: min(100% - 32px, 560px)
-    }    .brand {
+    }
+
+    .brand {
         font-size: 19px
-    }.hero {
+    }
+
+    .hero {
         padding: 28px 0 55px;
         min-height: auto
     }
@@ -1819,7 +1828,9 @@ h2 span {
     background: var(--ember);
     color: var(--coal);
     font-family: inherit
-}.brand {
+}
+
+.brand {
     font-size: 30px
 }
 
@@ -1827,7 +1838,9 @@ h2 span {
     border-radius: 12px;
     transform: none;
     color: var(--coal)
-}.hero {
+}
+
+.hero {
     background: radial-gradient(55% 65% at 72% 55%, #ff5a2638, transparent 72%), var(--coal);
     padding: 60px 0 100px;
     min-height: 700px
@@ -2309,7 +2322,9 @@ h2 {
     height: 100%;
     pointer-events: none;
     z-index: 0
-}.anim .reveal {
+}
+
+.anim .reveal {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1)
@@ -2483,9 +2498,11 @@ footer {
 @media(max-width:1100px) {
     .hero h1 {
         font-size: clamp(54px, 7.4vw, 92px)
-    }}
+    }
+}
 
-@media(max-width:860px) {.hero {
+@media(max-width:860px) {
+    .hero {
         min-height: 0;
         padding: 40px 0 76px
     }
@@ -5421,103 +5438,1058 @@ footer {
    HEADER — Ember Capsule  (+ mobile spacing tweaks)
    ========================================================================== */
 /* المساحة اللي بياخدها الهيدر العايم (بتتحسب في الـ padding بتاع الصفحات) */
-:root{--hh:calc(76px + env(safe-area-inset-top))}
-@media(min-width:861px){:root{--hh:calc(88px + env(safe-area-inset-top))}}
-html{scroll-padding-top:calc(var(--hh) + 6px)}
-html.nav-open,html.nav-open body{overflow:hidden}
-html.nav-open .whatsapp-float{opacity:0;pointer-events:none}
+:root {
+    --hh: calc(76px + env(safe-area-inset-top))
+}
+
+@media(min-width:861px) {
+    :root {
+        --hh: calc(88px + env(safe-area-inset-top))
+    }
+}
+
+html {
+    scroll-padding-top: calc(var(--hh) + 6px)
+}
+
+html.nav-open,
+html.nav-open body {
+    overflow: hidden
+}
+
+html.nav-open .whatsapp-float {
+    opacity: 0;
+    pointer-events: none
+}
 
 /* ---------- الكبسولة العايمة ---------- */
-header{position:fixed;top:calc(10px + env(safe-area-inset-top));left:0;right:0;z-index:60;height:auto;display:block;padding:0;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;pointer-events:none;transition:none}
-header.scrolled{height:auto;background:none}
-header .nav{position:relative;isolation:isolate;pointer-events:auto;width:min(calc(100% - 20px),1180px);margin:0 auto;min-height:56px;padding:6px 10px 6px 12px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+header {
+    position: fixed;
+    top: calc(10px + env(safe-area-inset-top));
+    left: 0;
+    right: 0;
+    z-index: 60;
+    height: auto;
+    display: block;
+    padding: 0;
+    background: none;
+    border: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    pointer-events: none;
+    transition: none
+}
+
+header.scrolled {
+    height: auto;
+    background: none
+}
+
+header .nav {
+    position: relative;
+    isolation: isolate;
+    pointer-events: auto;
+    width: min(calc(100% - 20px), 1180px);
+    margin: 0 auto;
+    min-height: 56px;
+    padding: 6px 10px 6px 12px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: width .45s cubic-bezier(.2, .8, .2, 1)
+}
+
 /* الزجاج على pseudo-element عشان الـ backdrop-filter ميكسرش الـ position:fixed للقائمة */
-header .nav::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(180deg,#201a17c7,#15110fb8);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);border:1px solid #ece5d81f;box-shadow:0 12px 40px #000000a0,inset 0 1px 0 #ffffff14;transition:border-color .3s}
-header.scrolled .nav::before{border-color:#ff8a4c47}
+header .nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(180deg, #201a17c7, #15110fb8);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+    border: 1px solid #ece5d81f;
+    box-shadow: 0 12px 40px #000000a0, inset 0 1px 0 #ffffff14;
+    transition: border-color .3s
+}
+
+header.scrolled .nav::before {
+    border-color: #ff8a4c47
+}
+
 /* خط تقدّم القراءة على حافة الكبسولة */
-header .nav::after{content:"";position:absolute;left:26px;right:26px;bottom:-1px;height:2px;border-radius:2px;background:linear-gradient(90deg,#d2a64e,#ff5a26);transform-origin:right center;transform:scaleX(var(--sp,0));pointer-events:none}
-.brand,.nav-actions{position:relative;z-index:2}
-.nav-actions{display:flex;align-items:center;gap:10px}
-header .nav-links{color:#cfc7ba}
-.brand{font-size:24px;gap:10px;min-width:0}
-.brand-mark{width:38px;height:38px;border-radius:12px}
-.brand-mark i{animation:hdFlick 3.4s ease-in-out infinite}
-.brand small.nav-where{display:none}
-header .icon-btn{position:relative;width:44px;height:44px;border-radius:50%;background:#ffffff0f;border:1px solid #ece5d81f;color:var(--ash);display:grid;place-items:center;transition:background .25s,border-color .25s,transform .25s}
-header .icon-btn:hover{background:#ff5a2622;border-color:#ff8a4c66}
-header .icon-btn:active{transform:scale(.94)}
-.menu-toggle{display:none}
-.menu-toggle i{animation:hdTog .45s cubic-bezier(.2,.8,.2,1)}
-.nav-ind{display:none}.nav-extra{display:none}
+header .nav::after {
+    content: "";
+    position: absolute;
+    left: 26px;
+    right: 26px;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #d2a64e, #ff5a26);
+    transform-origin: right center;
+    transform: scaleX(var(--sp, 0));
+    pointer-events: none
+}
+
+.brand,
+.nav-actions {
+    position: relative;
+    z-index: 2
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+header .nav-links {
+    color: #cfc7ba
+}
+
+.brand {
+    font-size: 24px;
+    gap: 10px;
+    min-width: 0
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px
+}
+
+.brand-mark i {
+    animation: hdFlick 3.4s ease-in-out infinite
+}
+
+.brand small.nav-where {
+    display: none
+}
+
+header .icon-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff0f;
+    border: 1px solid #ece5d81f;
+    color: var(--ash);
+    display: grid;
+    place-items: center;
+    transition: background .25s, border-color .25s, transform .25s
+}
+
+header .icon-btn:hover {
+    background: #ff5a2622;
+    border-color: #ff8a4c66
+}
+
+header .icon-btn:active {
+    transform: scale(.94)
+}
+
+.menu-toggle {
+    display: none
+}
+
+.menu-toggle i {
+    animation: hdTog .45s cubic-bezier(.2, .8, .2, 1)
+}
+
+.nav-ind {
+    display: none
+}
+
+.nav-extra {
+    display: none
+}
 
 /* ---------- كمبيوتر ---------- */
-@media(min-width:861px){
-header .nav{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;padding:6px 10px 6px 14px}
-header.scrolled .nav{width:min(calc(100% - 28px),1040px)}
-.brand{justify-self:start}.nav-actions{justify-self:end}
-header .nav-links{position:relative;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:#ffffff0b;border:1px solid #ece5d812;font-size:14px}
-header .nav-links a{position:relative;z-index:1;padding:9px 16px;border-radius:999px;color:#cfc7ba;white-space:nowrap;transition:color .25s}
-header .nav-links a:hover,header .nav-links a.active{color:var(--ash)}
-header .nav-links a.is-under{color:#15110f}
-.nav-ind{display:block;position:absolute;top:4px;bottom:4px;left:0;width:var(--iw,0);transform:translateX(var(--ix,0));border-radius:999px;background:linear-gradient(135deg,#ff8a4c,#ff5a26);box-shadow:0 0 22px #ff5a2680;opacity:0;transition:transform .5s cubic-bezier(.2,.8,.2,1),width .5s cubic-bezier(.2,.8,.2,1),opacity .2s}
-.nav-actions .btn-orange{border-radius:999px;padding:11px 18px;font-size:13px;white-space:nowrap}
+@media(min-width:861px) {
+    header .nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 16px;
+        padding: 6px 10px 6px 14px
+    }
+
+    header.scrolled .nav {
+        width: min(calc(100% - 28px), 1040px)
+    }
+
+    .brand {
+        justify-self: start
+    }
+
+    .nav-actions {
+        justify-self: end
+    }
+
+    header .nav-links {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        padding: 4px;
+        border-radius: 999px;
+        background: #ffffff0b;
+        border: 1px solid #ece5d812;
+        font-size: 14px
+    }
+
+    header .nav-links a {
+        position: relative;
+        z-index: 1;
+        padding: 9px 16px;
+        border-radius: 999px;
+        color: #cfc7ba;
+        white-space: nowrap;
+        transition: color .25s
+    }
+
+    header .nav-links a:hover,
+    header .nav-links a.active {
+        color: var(--ash)
+    }
+
+    header .nav-links a.is-under {
+        color: #15110f
+    }
+
+    .nav-ind {
+        display: block;
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 0;
+        width: var(--iw, 0);
+        transform: translateX(var(--ix, 0));
+        border-radius: 999px;
+        background: linear-gradient(135deg, #ff8a4c, #ff5a26);
+        box-shadow: 0 0 22px #ff5a2680;
+        opacity: 0;
+        transition: transform .5s cubic-bezier(.2, .8, .2, 1), width .5s cubic-bezier(.2, .8, .2, 1), opacity .2s
+    }
+
+    .nav-actions .btn-orange {
+        border-radius: 999px;
+        padding: 11px 18px;
+        font-size: 13px;
+        white-space: nowrap
+    }
 }
 
 /* ---------- موبايل: كبسولة + قائمة كاملة بتنفجر من الزرار ---------- */
-@media(max-width:860px){
-header .nav{min-height:54px;padding:5px 8px 5px 10px}
-header .nav::after{display:none}
-.brand{font-size:22px;gap:9px}
-.brand-mark{width:36px;height:36px;border-radius:11px;font-size:17px}
-.brand>span:last-child{display:flex;flex-direction:column;line-height:1.05}
-.brand small:not(.nav-where){display:none}
-.brand small.nav-where{display:block;overflow:hidden;margin-top:3px;font:600 11px "IBM Plex Sans Arabic",sans-serif;letter-spacing:0;color:var(--ember-2)}
-.brand small.nav-where.swap{animation:hdWhere .5s cubic-bezier(.2,.8,.2,1)}
-.nav-actions{gap:8px}.nav-actions .btn{display:none}
-.menu-toggle{display:grid}
-/* حلقة تقدّم القراءة حوالين الزرار */
-.menu-toggle::before{content:"";position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--ember) calc(var(--sp,0)*360deg),transparent 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));pointer-events:none}
-html.nav-open .menu-toggle{background:var(--ember);border-color:var(--ember);color:var(--coal)}
+@media(max-width:860px) {
+    header .nav {
+        min-height: 54px;
+        padding: 5px 8px 5px 10px
+    }
 
-header .nav-links{counter-reset:nv;position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:0;overflow-y:auto;padding:calc(var(--hh) + 22px) 26px calc(26px + env(safe-area-inset-bottom));background:radial-gradient(70% 45% at 50% 105%,#ff5a2640,transparent 70%),radial-gradient(60% 30% at 82% 0,#d2a64e1c,transparent 70%),#0e0b09;border:0;font-size:inherit;clip-path:circle(0px at var(--tx,40px) var(--ty,36px));visibility:hidden;pointer-events:none;transition:clip-path .8s cubic-bezier(.77,0,.18,1),visibility 0s .8s}
-header .nav-links.open{clip-path:circle(150vmax at var(--tx,40px) var(--ty,36px));visibility:visible;pointer-events:auto;transition:clip-path .8s cubic-bezier(.77,0,.18,1),visibility 0s}
-/* علامة شعلة كبيرة باهتة في الخلفية */
-header .nav-links::before{content:"";position:fixed;right:-14%;bottom:-8%;width:82vw;aspect-ratio:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23ff5a26' d='M32 3c3 10 16 17 16 33a16 16 0 0 1-32 0c0-8 4-13 8-18 1 5 4 8 7 9-1-9-1-16 1-24z'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.07;pointer-events:none;animation:hdFlame 4s ease-in-out infinite}
-header .nav-links a{position:relative;display:flex;align-items:baseline;gap:14px;padding:14px 4px;border-bottom:1px solid #ece5d81a;font:400 clamp(32px,9.4vw,46px)/1.15 Lalezar,"IBM Plex Sans Arabic",sans-serif;color:var(--ash);opacity:0;transform:translateY(26px);transition:opacity .5s,transform .65s cubic-bezier(.2,.8,.2,1),color .25s}
-header .nav-links.open a{opacity:1;transform:none;transition-delay:calc(.3s + var(--i,0)*.07s)}
-header .nav-links a::before{counter-increment:nv;content:"0" counter(nv);font:600 12px "IBM Plex Sans Arabic",sans-serif;letter-spacing:.1em!important;color:var(--brass)}
-header .nav-links a.active{color:var(--ember-2)}
-header .nav-links a.active::after{content:"";width:9px;height:9px;margin-inline-start:auto;align-self:center;border-radius:50%;background:var(--ember);box-shadow:0 0 14px var(--ember)}
-header .nav-links .nav-extra{display:grid;gap:10px;margin-top:auto;padding-top:22px;opacity:0;transform:translateY(26px);transition:opacity .5s,transform .65s cubic-bezier(.2,.8,.2,1)}
-header .nav-links.open .nav-extra{opacity:1;transform:none;transition-delay:calc(.3s + var(--i,0)*.07s)}
-header .nav-links .nav-extra a.btn{display:flex;justify-content:center;align-items:center;gap:10px;padding:16px;border:0;border-radius:14px;font:700 15px "IBM Plex Sans Arabic",sans-serif;color:var(--coal);opacity:1;transform:none}
-header .nav-links .nav-extra a.btn::before,header .nav-links .nav-extra a.btn::after{content:none}
-.nav-wa{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px;border-radius:14px;border:1px solid #d2a64e66;background:#d2a64e12;color:var(--brass-2);font:600 15px "IBM Plex Sans Arabic",sans-serif}
-.nav-extra p{margin:2px 0 0;text-align:center;font-size:12px;color:var(--soft)}
+    header .nav::after {
+        display: none
+    }
+
+    .brand {
+        font-size: 22px;
+        gap: 9px
+    }
+
+    .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 11px;
+        font-size: 17px
+    }
+
+    .brand>span:last-child {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.05
+    }
+
+    .brand small:not(.nav-where) {
+        display: none
+    }
+
+    .brand small.nav-where {
+        display: block;
+        overflow: hidden;
+        margin-top: 3px;
+        font: 600 11px "IBM Plex Sans Arabic", sans-serif;
+        letter-spacing: 0;
+        color: var(--ember-2)
+    }
+
+    .brand small.nav-where.swap {
+        animation: hdWhere .5s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    .nav-actions {
+        gap: 8px
+    }
+
+    .nav-actions .btn {
+        display: none
+    }
+
+    .menu-toggle {
+        display: grid
+    }
+
+    /* حلقة تقدّم القراءة حوالين الزرار */
+    .menu-toggle::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: conic-gradient(var(--ember) calc(var(--sp, 0)*360deg), transparent 0);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+        pointer-events: none
+    }
+
+    html.nav-open .menu-toggle {
+        background: var(--ember);
+        border-color: var(--ember);
+        color: var(--coal)
+    }
+
+    header .nav-links {
+        counter-reset: nv;
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
+        overflow-y: auto;
+        padding: calc(var(--hh) + 22px) 26px calc(26px + env(safe-area-inset-bottom));
+        background: radial-gradient(70% 45% at 50% 105%, #ff5a2640, transparent 70%), radial-gradient(60% 30% at 82% 0, #d2a64e1c, transparent 70%), #0e0b09;
+        border: 0;
+        font-size: inherit;
+        clip-path: circle(0px at var(--tx, 40px) var(--ty, 36px));
+        visibility: hidden;
+        pointer-events: none;
+        transition: clip-path .8s cubic-bezier(.77, 0, .18, 1), visibility 0s .8s
+    }
+
+    header .nav-links.open {
+        clip-path: circle(150vmax at var(--tx, 40px) var(--ty, 36px));
+        visibility: visible;
+        pointer-events: auto;
+        transition: clip-path .8s cubic-bezier(.77, 0, .18, 1), visibility 0s
+    }
+
+    /* علامة شعلة كبيرة باهتة في الخلفية */
+    header .nav-links::before {
+        content: "";
+        position: fixed;
+        right: -14%;
+        bottom: -8%;
+        width: 82vw;
+        aspect-ratio: 1;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23ff5a26' d='M32 3c3 10 16 17 16 33a16 16 0 0 1-32 0c0-8 4-13 8-18 1 5 4 8 7 9-1-9-1-16 1-24z'/%3E%3C/svg%3E") center/contain no-repeat;
+        opacity: .07;
+        pointer-events: none;
+        animation: hdFlame 4s ease-in-out infinite
+    }
+
+    header .nav-links a {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        padding: 14px 4px;
+        border-bottom: 1px solid #ece5d81a;
+        font: 400 clamp(32px, 9.4vw, 46px)/1.15 Lalezar, "IBM Plex Sans Arabic", sans-serif;
+        color: var(--ash);
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity .5s, transform .65s cubic-bezier(.2, .8, .2, 1), color .25s
+    }
+
+    header .nav-links.open a {
+        opacity: 1;
+        transform: none;
+        transition-delay: calc(.3s + var(--i, 0)*.07s)
+    }
+
+    header .nav-links a::before {
+        counter-increment: nv;
+        content: "0"counter(nv);
+        font: 600 12px "IBM Plex Sans Arabic", sans-serif;
+        letter-spacing: .1em !important;
+        color: var(--brass)
+    }
+
+    header .nav-links a.active {
+        color: var(--ember-2)
+    }
+
+    header .nav-links a.active::after {
+        content: "";
+        width: 9px;
+        height: 9px;
+        margin-inline-start: auto;
+        align-self: center;
+        border-radius: 50%;
+        background: var(--ember);
+        box-shadow: 0 0 14px var(--ember)
+    }
+
+    header .nav-links .nav-extra {
+        display: grid;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 22px;
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity .5s, transform .65s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    header .nav-links.open .nav-extra {
+        opacity: 1;
+        transform: none;
+        transition-delay: calc(.3s + var(--i, 0)*.07s)
+    }
+
+    header .nav-links .nav-extra a.btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 16px;
+        border: 0;
+        border-radius: 14px;
+        font: 700 15px "IBM Plex Sans Arabic", sans-serif;
+        color: var(--coal);
+        opacity: 1;
+        transform: none
+    }
+
+    header .nav-links .nav-extra a.btn::before,
+    header .nav-links .nav-extra a.btn::after {
+        content: none
+    }
+
+    .nav-wa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px;
+        border-radius: 14px;
+        border: 1px solid #d2a64e66;
+        background: #d2a64e12;
+        color: var(--brass-2);
+        font: 600 15px "IBM Plex Sans Arabic", sans-serif
+    }
+
+    .nav-extra p {
+        margin: 2px 0 0;
+        text-align: center;
+        font-size: 12px;
+        color: var(--soft)
+    }
 }
-@media(max-width:860px) and (max-height:700px){header .nav-links a{padding:9px 4px;font-size:clamp(28px,7.6vw,38px)}.nav-extra p{display:none}}
+
+@media(max-width:860px) and (max-height:700px) {
+    header .nav-links a {
+        padding: 9px 4px;
+        font-size: clamp(28px, 7.6vw, 38px)
+    }
+
+    .nav-extra p {
+        display: none
+    }
+}
 
 /* ---------- الصفحات تبدأ تحت الكبسولة ---------- */
-.hero{padding-top:calc(var(--hh) + 18px)}
-.mp{padding-top:calc(var(--hh) + 14px)}
-.pp{padding-top:calc(var(--hh) + 10px)}
-.mp-aside{top:calc(var(--hh) + 8px)}
-.pp-media{top:calc(var(--hh) + 12px)}
-@media(max-width:860px){.hero{padding-top:calc(var(--hh) + 4px)}}
+.hero {
+    padding-top: calc(var(--hh) + 18px)
+}
+
+.mp {
+    padding-top: calc(var(--hh) + 14px)
+}
+
+.pp {
+    padding-top: calc(var(--hh) + 10px)
+}
+
+.mp-aside {
+    top: calc(var(--hh) + 8px)
+}
+
+.pp-media {
+    top: calc(var(--hh) + 12px)
+}
+
+@media(max-width:860px) {
+    .hero {
+        padding-top: calc(var(--hh) + 4px)
+    }
+}
 
 /* ---------- موبايل: مسافات أريح + صورة الـ hero أعلى شوية ---------- */
-@media(max-width:700px){
-.hero{padding:calc(var(--hh) - 6px) 0 36px}
-.mp{padding-top:calc(var(--hh) + 4px)}
-.mp-tabs{top:calc(var(--hh) - 8px)}
-.categories,.featured,.golden-banner,.promise,.tracking{padding:30px 0}
-.section-head{margin-bottom:18px}
-footer{padding-top:44px}
-}
-@media(max-width:700px) and (max-height:700px){.categories,.featured,.golden-banner,.promise,.tracking{padding:22px 0}.section-head{margin-bottom:12px}}
+@media(max-width:700px) {
+    .hero {
+        padding: calc(var(--hh) - 6px) 0 36px
+    }
 
-@keyframes hdFlick{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.1) rotate(-4deg)}60%{transform:scale(.95) rotate(3deg)}}
-@keyframes hdTog{from{opacity:0;transform:rotate(-90deg) scale(.5)}}
-@keyframes hdWhere{from{opacity:0;transform:translateY(100%)}}
-@keyframes hdFlame{0%,100%{opacity:.05;transform:scale(1)}50%{opacity:.09;transform:scale(1.05)}}
-@media(prefers-reduced-motion:reduce){.brand-mark i,.menu-toggle i,.nav-where.swap,header .nav-links::before{animation:none}header .nav-links,header .nav-links a,.nav-ind,header .nav-links .nav-extra{transition:none}}
+    .mp {
+        padding-top: calc(var(--hh) + 4px)
+    }
+
+    .mp-tabs {
+        top: calc(var(--hh) - 8px)
+    }
+
+    .categories,
+    .featured,
+    .golden-banner,
+    .promise,
+    .tracking {
+        padding: 30px 0
+    }
+
+    .section-head {
+        margin-bottom: 18px
+    }
+
+    footer {
+        padding-top: 44px
+    }
+}
+
+@media(max-width:700px) and (max-height:700px) {
+
+    .categories,
+    .featured,
+    .golden-banner,
+    .promise,
+    .tracking {
+        padding: 22px 0
+    }
+
+    .section-head {
+        margin-bottom: 12px
+    }
+}
+
+@keyframes hdFlick {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0)
+    }
+
+    30% {
+        transform: scale(1.1) rotate(-4deg)
+    }
+
+    60% {
+        transform: scale(.95) rotate(3deg)
+    }
+}
+
+@keyframes hdTog {
+    from {
+        opacity: 0;
+        transform: rotate(-90deg) scale(.5)
+    }
+}
+
+@keyframes hdWhere {
+    from {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+}
+
+@keyframes hdFlame {
+
+    0%,
+    100% {
+        opacity: .05;
+        transform: scale(1)
+    }
+
+    50% {
+        opacity: .09;
+        transform: scale(1.05)
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .brand-mark i,
+    .menu-toggle i,
+    .nav-where.swap,
+    header .nav-links::before {
+        animation: none
+    }
+
+    header .nav-links,
+    header .nav-links a,
+    .nav-ind,
+    header .nav-links .nav-extra {
+        transition: none
+    }
+}
+
+/* ==========================================================================
+   COOL THEME — "Frost"  (صفحة العصائر وصفحة أي عصير)
+   --------------------------------------------------------------------------
+   بيتفعل من main.js (show) بـ body[data-theme="cool"] وبيعيد ربط نفس المتغيرات
+   الدلالية بقيم باردة. الخطوط والمسافات والزوايا والحركة زي ما هي في نظام التصميم.
+
+   token      | warm (الافتراضي) | cool (frost) | الاستخدام
+   --coal     | #15110f          | #08161c      | خلفية الصفحة
+   --smoke    | #201a17          | #10252e      | أسطح الكروت
+   --smoke-2  | #2c2420          | #173440      | أسطح أغمق (مربعات الصور)
+   --ash      | #ece5d8          | #e8f7fa      | النص الأساسي
+   --soft     | #b3aa9d          | #9db9c2      | النص الثانوي
+   --ember    | #ff5a26          | #5fd9ee      | اللون الرئيسي (أزرار، تابز، تاج، قرص الهيدر)
+   --ember-2  | #ff8a4c          | #a9f0f7      | الرئيسي الفاتح (روابط)
+   --brass    | #d2a64e          | #92e6cf      | الثانوي (نجوم، تفاصيل)
+   --brass-2  | #f0d594          | #c4f3e6      | الثانوي الفاتح (سعر، تقييم)
+
+   اللي مابيتغيرش: لوجو فحمة (بيفضل ناري). أيقونة الواتساب بقاعدة "Frost" خاصة تحت.
+   اللمسة المميزة: قطرات تكثّف على زجاج كل كوب + بخار وفقاعات هادية في الخلفية.
+   ========================================================================== */
+body[data-theme="cool"] {
+    --coal: #08161c;
+    --smoke: #10252e;
+    --smoke-2: #173440;
+    --ash: #e8f7fa;
+    --soft: #9db9c2;
+    --ember: #5fd9ee;
+    --ember-2: #a9f0f7;
+    --brass: #92e6cf;
+    --brass-2: #c4f3e6;
+    --ink: #08161c;
+    --orange: #5fd9ee;
+    --orange-2: #a9f0f7;
+    --gold: #92e6cf;
+    --gold-light: #c4f3e6;
+    --cream: #e8f7fa;
+    --line: rgba(169, 240, 247, .13);
+    --frost-edge: rgba(169, 240, 247, .2);
+    background: var(--coal);
+    transition: background-color .6s ease
+}
+
+body {
+    transition: background-color .6s ease
+}
+
+/* ---------- أجواء الصفحة: ضباب جليدي من فوق + فقاعات بتطلع ببطء ---------- */
+body[data-theme="cool"]::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(70% 38% at 50% -6%, rgba(169, 240, 247, .17), transparent 70%)
+}
+
+body[data-theme="cool"]::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: calc(100vh + 700px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: .85;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .55) 0 2px, rgba(190, 245, 255, .16) 2.5px 7px, transparent 8px) 220px 90px / 1180px 700px,
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .45) 0 1.5px, rgba(190, 245, 255, .13) 2px 5px, transparent 6px) 640px 380px / 860px 700px,
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .4) 0 1px, rgba(190, 245, 255, .11) 1.5px 3.6px, transparent 4.6px) 180px 120px / 700px 350px,
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .34) 0 .8px, rgba(190, 245, 255, .09) 1.2px 2.8px, transparent 3.6px) 410px 260px / 560px 350px;
+    animation: coolRise 42s linear infinite
+}
+
+@keyframes coolRise {
+    to {
+        transform: translateY(-700px)
+    }
+}
+
+/* ---------- الهيدر: نفس الكبسولة بألوان باردة (اللوجو يفضل ناري) ---------- */
+body[data-theme="cool"] .brand-mark {
+    background: #ff5a26;
+    color: #15110f
+}
+
+body[data-theme="cool"] header .nav::before {
+    background: linear-gradient(180deg, rgba(18, 42, 52, .8), rgba(8, 22, 28, .74));
+    border-color: var(--frost-edge);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .1)
+}
+
+body[data-theme="cool"] header.scrolled .nav::before {
+    border-color: rgba(95, 217, 238, .4)
+}
+
+body[data-theme="cool"] header .nav::after {
+    background: linear-gradient(90deg, #92e6cf, #5fd9ee)
+}
+
+body[data-theme="cool"] header .icon-btn:hover {
+    background: rgba(95, 217, 238, .16);
+    border-color: rgba(169, 240, 247, .45)
+}
+
+@media (min-width:861px) {
+    body[data-theme="cool"] header .nav-links {
+        background: rgba(169, 240, 247, .06);
+        border-color: rgba(169, 240, 247, .1)
+    }
+
+    body[data-theme="cool"] .nav-ind {
+        background: linear-gradient(135deg, #a9f0f7, #3fc9e4);
+        box-shadow: 0 0 22px rgba(95, 217, 238, .5)
+    }
+
+    body[data-theme="cool"] header .nav-links a.is-under {
+        color: #062029
+    }
+}
+
+@media (max-width:860px) {
+    body[data-theme="cool"] header .nav-links {
+        background: radial-gradient(70% 45% at 50% 105%, rgba(95, 217, 238, .22), transparent 70%), radial-gradient(60% 30% at 82% 0, rgba(146, 230, 207, .12), transparent 70%), #061015;
+        border: 0
+    }
+
+    body[data-theme="cool"] header .nav-links::before {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg stroke='%235fd9ee' stroke-width='3' stroke-linecap='round' fill='none'%3E%3Cpath id='a' d='M50 6v88M50 22l-10-8M50 22l10-8M50 78l-10 8M50 78l10 8'/%3E%3Cuse href='%23a' transform='rotate(60 50 50)'/%3E%3Cuse href='%23a' transform='rotate(120 50 50)'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+        opacity: .08
+    }
+
+    body[data-theme="cool"] .nav-wa {
+        border-color: rgba(146, 230, 207, .45);
+        background: rgba(146, 230, 207, .08);
+        color: #c4f3e6
+    }
+}
+
+/* ---------- صفحة العصائر: عنوان وتابز وبحث ---------- */
+body[data-theme="cool"] .mp h1 {
+    background: linear-gradient(180deg, #fff 8%, #c9f7fb 52%, #5fd9ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 6px 22px rgba(95, 217, 238, .28))
+}
+
+body[data-theme="cool"] .mp-tab {
+    background: rgba(169, 240, 247, .055);
+    border-color: rgba(169, 240, 247, .16);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px)
+}
+
+body[data-theme="cool"] .mp-tab:hover {
+    border-color: rgba(169, 240, 247, .5)
+}
+
+body[data-theme="cool"] .mp-tab.on {
+    background: linear-gradient(135deg, #a9f0f7, #5fd9ee);
+    border-color: transparent;
+    color: #062029;
+    box-shadow: 0 8px 24px -8px rgba(95, 217, 238, .6)
+}
+
+body[data-theme="cool"] .searchbox input,
+body[data-theme="cool"] .mp-sort {
+    background: rgba(169, 240, 247, .06);
+    border-color: rgba(169, 240, 247, .16);
+    color: var(--ash)
+}
+
+body[data-theme="cool"] .searchbox input::placeholder {
+    color: var(--soft)
+}
+
+body[data-theme="cool"] .searchbox input:focus {
+    border-color: #5fd9ee;
+    box-shadow: 0 0 0 3px rgba(95, 217, 238, .2);
+    outline: none
+}
+
+@media (max-width:559px) {
+    body[data-theme="cool"] .mp-tabs {
+        background: rgba(8, 22, 28, .92)
+    }
+}
+
+/* ---------- الكروت: زجاج متجمد + وهج بلون الفاكهة + قطرات تكثّف ---------- */
+body[data-theme="cool"] .product-card {
+    background: linear-gradient(165deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .025));
+    border: 1px solid rgba(169, 240, 247, .16);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px)
+}
+
+body[data-theme="cool"] .product-card:hover {
+    border-color: rgba(169, 240, 247, .5);
+    box-shadow: 0 22px 48px -14px var(--glow, rgba(95, 217, 238, .45)), inset 0 1px 0 rgba(255, 255, 255, .12)
+}
+
+body[data-theme="cool"] .product-card .product-image {
+    background: radial-gradient(circle at 50% 120%, rgba(95, 217, 238, .18), transparent 65%), var(--smoke-2)
+}
+
+body[data-theme="cool"] .product-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 14% 18%, rgba(255, 255, 255, .85) 0 .8px, rgba(200, 245, 255, .22) 1.2px 3.2px, transparent 4px),
+        radial-gradient(circle at 80% 12%, rgba(255, 255, 255, .8) 0 .7px, rgba(200, 245, 255, .2) 1px 2.4px, transparent 3.2px),
+        radial-gradient(circle at 90% 46%, rgba(255, 255, 255, .8) 0 .8px, rgba(200, 245, 255, .22) 1.2px 3px, transparent 3.8px),
+        radial-gradient(circle at 20% 66%, rgba(255, 255, 255, .75) 0 .7px, rgba(200, 245, 255, .18) 1px 2.2px, transparent 3px),
+        radial-gradient(circle at 64% 84%, rgba(255, 255, 255, .8) 0 .8px, rgba(200, 245, 255, .2) 1.2px 2.8px, transparent 3.6px),
+        radial-gradient(circle at 8% 92%, rgba(255, 255, 255, .7) 0 .6px, rgba(200, 245, 255, .16) 1px 2px, transparent 2.8px),
+        linear-gradient(180deg, rgba(220, 250, 255, .2), transparent 24%)
+}
+
+body[data-theme="cool"] .product-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(180deg, transparent, rgba(215, 250, 255, .6) 70%, rgba(215, 250, 255, .1)) 80% 0 / 2px 30% no-repeat,
+        linear-gradient(180deg, transparent, rgba(215, 250, 255, .5) 70%, rgba(215, 250, 255, .1)) 30% 0 / 2px 24% no-repeat
+}
+
+body[data-theme="cool"] .product-card:hover .product-image::before {
+    animation: coolDrip 1.5s ease-in .05s 1 both
+}
+
+@keyframes coolDrip {
+    0% {
+        opacity: 0;
+        transform: translateY(-40%)
+    }
+
+    15% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(340%)
+    }
+}
+
+body[data-theme="cool"] .fav {
+    background: rgba(8, 22, 28, .75)
+}
+
+body[data-theme="cool"] .product-meta,
+body[data-theme="cool"] .product-info p,
+body[data-theme="cool"] .price small {
+    color: var(--soft)
+}
+
+body[data-theme="cool"] .btn-orange {
+    box-shadow: 0 10px 25px rgba(95, 217, 238, .22)
+}
+
+body[data-theme="cool"] .btn-orange:hover {
+    box-shadow: 0 10px 30px rgba(95, 217, 238, .45)
+}
+
+/* ---------- السلة الجانبية + صفحة العصير ---------- */
+body[data-theme="cool"] .mp-aside {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+    border: 1px solid rgba(169, 240, 247, .2);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px)
+}
+
+body[data-theme="cool"] .pp-media {
+    box-shadow: 0 0 0 1px var(--line), 0 40px 120px rgba(95, 217, 238, .16)
+}
+
+body[data-theme="cool"] .pp-desc {
+    color: #c7dde2
+}
+
+@media (max-width:860px) {
+    body[data-theme="cool"] .pp-buy {
+        background: rgba(8, 22, 28, .96)
+    }
+}
+
+/* ==========================================================================
+   WhatsApp — "Frost": زجاج جليدي + لمعة بتعدّي + بلورات ثلج بدل اللهب
+   بيتجمّد بحركة قصيرة أول ما الثيم البارد يتفعل (واللهب يرجع في باقي الصفحات)
+   ========================================================================== */
+body[data-theme="cool"] .whatsapp-float {
+    background: linear-gradient(135deg, #a9f0f7 0%, #5fd9ee 52%, #2fa9cf 100%);
+    color: #062029;
+    border: 1px solid rgba(255, 255, 255, .55);
+    box-shadow: 0 10px 28px rgba(47, 169, 207, .45), 0 0 22px rgba(95, 217, 238, .35), inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -8px 14px rgba(8, 60, 80, .25);
+    animation: waFreeze .9s cubic-bezier(.2, .8, .2, 1) backwards, waChill 3.2s ease-in-out .9s infinite
+}
+
+body[data-theme="cool"] .whatsapp-float:hover {
+    background: linear-gradient(135deg, #c4f6fb, #7fe6f4 52%, #3cb9de)
+}
+
+body[data-theme="cool"] .whatsapp-float i.fa-whatsapp {
+    color: #062029;
+    animation: waShiver 3.4s ease-in-out infinite
+}
+
+body[data-theme="cool"] .whatsapp-float::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    clip-path: inset(0 round 999px);
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, .8) 50%, transparent 60%) 220% 0 / 250% 100% no-repeat;
+    animation: waGlint 4.2s ease-in-out 1.4s infinite;
+    pointer-events: none
+}
+
+body[data-theme="cool"] .whatsapp-float::after {
+    border-color: #a9f0f7;
+    animation: waIce 3s ease-out infinite
+}
+
+body[data-theme="cool"] .wa-flames i,
+body[data-theme="cool"] .wa-flames i:nth-child(4),
+body[data-theme="cool"] .wa-flames i:nth-child(5) {
+    width: var(--w, 10px);
+    height: var(--w, 10px);
+    margin-left: calc(var(--w, 10px) / -2);
+    border-radius: 0;
+    clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+    background: linear-gradient(135deg, #fff, #a9f0f7);
+    box-shadow: none;
+    filter: drop-shadow(0 0 5px rgba(160, 240, 255, .9));
+    animation: waSnow var(--t) var(--d) ease-in-out infinite
+}
+
+body[data-theme="cool"] .wa-flames i:nth-child(4),
+body[data-theme="cool"] .wa-flames i:nth-child(5) {
+    --w: 6px
+}
+
+@keyframes waFreeze {
+    from {
+        transform: scale(.6) rotate(-10deg);
+        filter: blur(6px) brightness(1.7);
+        opacity: .25
+    }
+}
+
+@keyframes waChill {
+
+    0%,
+    100% {
+        box-shadow: 0 10px 28px rgba(47, 169, 207, .45), 0 0 22px rgba(95, 217, 238, .35), inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -8px 14px rgba(8, 60, 80, .25)
+    }
+
+    50% {
+        box-shadow: 0 12px 34px rgba(47, 169, 207, .6), 0 0 34px rgba(169, 240, 247, .5), inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -8px 14px rgba(8, 60, 80, .25)
+    }
+}
+
+@keyframes waGlint {
+
+    0%,
+    55% {
+        background-position: 220% 0
+    }
+
+    80%,
+    100% {
+        background-position: -120% 0
+    }
+}
+
+@keyframes waIce {
+    0% {
+        transform: scale(1);
+        opacity: .65
+    }
+
+    100% {
+        transform: scale(1.4, 1.9);
+        opacity: 0
+    }
+}
+
+@keyframes waShiver {
+
+    0%,
+    88%,
+    100% {
+        transform: none
+    }
+
+    91% {
+        transform: translateX(-2px) rotate(-4deg)
+    }
+
+    94% {
+        transform: translateX(2px) rotate(4deg)
+    }
+
+    97% {
+        transform: translateX(-1px)
+    }
+}
+
+@keyframes waSnow {
+    0% {
+        transform: translate(0, 6px) rotate(0) scale(.5);
+        opacity: 0
+    }
+
+    20% {
+        opacity: 1
+    }
+
+    100% {
+        transform: translate(var(--sx, 4px), -40px) rotate(180deg) scale(.95);
+        opacity: 0
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    body[data-theme="cool"]::after,
+    body[data-theme="cool"] .whatsapp-float,
+    body[data-theme="cool"] .whatsapp-float::before,
+    body[data-theme="cool"] .whatsapp-float::after,
+    body[data-theme="cool"] .whatsapp-float i.fa-whatsapp,
+    body[data-theme="cool"] .product-card:hover .product-image::before {
+        animation: none
+    }
+
+    body[data-theme="cool"] .wa-flames {
+        display: none
+    }
+}
