@@ -6063,7 +6063,7 @@ header .icon-btn:active {
    --brass    | #d2a64e          | #92e6cf      | الثانوي (نجوم، تفاصيل)
    --brass-2  | #f0d594          | #c4f3e6      | الثانوي الفاتح (سعر، تقييم)
 
-   اللي مابيتغيرش: لوجو فحمة (بيفضل ناري). أيقونة الواتساب بقاعدة "Frost" خاصة تحت.
+   لوجو فحمة بيتحول لسماوي مع الصفحة. أيقونة الواتساب بقاعدة "Frost" خاصة تحت.
    اللمسة المميزة: قطرات تكثّف على زجاج كل كوب + بخار وفقاعات هادية في الخلفية.
    ========================================================================== */
 body[data-theme="cool"] {
@@ -6128,8 +6128,9 @@ body[data-theme="cool"]::after {
 
 /* ---------- الهيدر: نفس الكبسولة بألوان باردة (اللوجو يفضل ناري) ---------- */
 body[data-theme="cool"] .brand-mark {
-    background: #ff5a26;
-    color: #15110f
+    background: linear-gradient(135deg, #a9f0f7, #3fc9e4);
+    color: #062029;
+    box-shadow: 0 0 18px rgba(95, 217, 238, .35)
 }
 
 body[data-theme="cool"] header .nav::before {
@@ -6491,5 +6492,169 @@ body[data-theme="cool"] .wa-flames i:nth-child(5) {
 
     body[data-theme="cool"] .wa-flames {
         display: none
+    }
+}
+
+/* ==========================================================================
+   SORT DROPDOWN — بديل select الأصلي (نفس الألوان من المتغيرات، فبيتبدّل مع الثيم)
+   ========================================================================== */
+.mp-sort {
+    color-scheme: dark
+}
+
+.mp-sort option {
+    background: var(--smoke);
+    color: var(--ash)
+}
+
+.mp-tools .mp-sort.is-enhanced {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    flex: none
+}
+
+.dd {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto
+}
+
+.dd-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-width: 168px;
+    min-height: 46px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--smoke);
+    color: var(--ash);
+    font: 500 14px "IBM Plex Sans Arabic", sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color .2s, background-color .2s
+}
+
+.dd-btn:hover {
+    border-color: var(--ember-2)
+}
+
+.dd-btn:focus-visible {
+    outline: 2px solid var(--ember-2);
+    outline-offset: 2px
+}
+
+.dd-btn[aria-expanded="true"] {
+    border-color: var(--ember)
+}
+
+.dd-arrow {
+    width: 12px;
+    height: 8px;
+    flex: none;
+    color: var(--soft);
+    transition: transform .25s
+}
+
+.dd-btn[aria-expanded="true"] .dd-arrow {
+    transform: rotate(180deg);
+    color: var(--ember-2)
+}
+
+.dd-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 40;
+    min-width: 100%;
+    width: max-content;
+    max-width: min(280px, calc(100vw - 28px));
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    border-radius: 14px;
+    background: var(--smoke);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .06);
+    outline: none;
+    transform-origin: top left;
+    animation: ddIn .16s ease-out
+}
+
+.dd-menu[hidden] {
+    display: none
+}
+
+.dd-menu li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 10px;
+    color: var(--ash);
+    font: 500 14px "IBM Plex Sans Arabic", sans-serif;
+    white-space: nowrap;
+    cursor: pointer
+}
+
+.dd-menu li.is-active {
+    background: rgba(255, 255, 255, .08)
+}
+
+.dd-menu li[aria-selected="true"] {
+    color: var(--ember-2);
+    font-weight: 700
+}
+
+.dd-check {
+    width: 12px;
+    height: 10px;
+    flex: none;
+    color: var(--ember);
+    opacity: 0
+}
+
+.dd-menu li[aria-selected="true"] .dd-check {
+    opacity: 1
+}
+
+body[data-theme="cool"] .dd-btn {
+    background: rgba(169, 240, 247, .06);
+    border-color: rgba(169, 240, 247, .16)
+}
+
+@keyframes ddIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(.98)
+    }
+}
+
+@media (max-width:559px) {
+    .dd-btn {
+        min-width: 150px;
+        padding: 0 12px;
+        font-size: 13px
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .dd-menu {
+        animation: none
+    }
+
+    .dd-arrow {
+        transition: none
     }
 }

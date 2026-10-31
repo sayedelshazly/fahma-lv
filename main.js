@@ -1,5 +1,5 @@
 if (window.__plActive && window.gsap) gsap.globalTimeline.pause(); // يبدأ تحريك الصفحة بعد انتهاء الـ preloader
-const WHATSAPP_NUMBER = "201099687091"; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
+const WHATSAPP_NUMBER = "201000000000"; // استبدله برقم واتساب المطعم بصيغة دولية بدون +
 const productsData = [{
         id: 1,
         name: "فحمة كلاسيك",
@@ -348,6 +348,7 @@ const favs = new Set((loadJSON("localStorage", "fahmaFavs", []) || []).filter(Nu
 const cartSubtotal = () => cart.reduce((s, x) => s + productsData.find(p => p.id === x.id).price * x.qty, 0);
 let activeCatalog = "menu",
     tabsFor = null,
+    sortDD = null,
     activeCategory = "all",
     activeFilter = "popular",
     searchTerm = "",
@@ -1014,7 +1015,120 @@ function renderMenuPage() {
     $("#sortSelect").setAttribute("aria-label", c.sort);
     syncTabs();
     $("#sortSelect").value = activeFilter;
+    syncSortDropdown();
     renderProducts()
+}
+
+/* ==========================================================================
+   قايمة الترتيب المخصصة — بديل select الأصلي
+   السبب: قايمة الـ select الأصلية بتتعرض بستايل المتصفح (فاتحة) وبتتقص فيها العناوين الطويلة.
+   الـ select الأصلي بيفضل مخفي كمصدر للقيمة، والقايمة دي بتتزامن معاه.
+   ========================================================================== */
+function initSortDropdown() {
+    const sel = $("#sortSelect");
+    if (!sel || sortDD) return;
+    const wrap = document.createElement("div");
+    wrap.className = "dd";
+    wrap.innerHTML = `<button type="button" class="dd-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="sortList"><span class="dd-label"></span><svg class="dd-arrow" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-menu" id="sortList" role="listbox" tabindex="-1" hidden></ul>`;
+    sel.before(wrap);
+    sel.classList.add("is-enhanced");
+    sel.setAttribute("aria-hidden", "true");
+    sel.tabIndex = -1;
+    const btn = wrap.querySelector(".dd-btn"),
+        menu = wrap.querySelector(".dd-menu");
+    menu.innerHTML = [...sel.options].map((o, i) => `<li role="option" id="sortOpt${i}"><span>${o.textContent}</span><svg class="dd-check" viewBox="0 0 12 10" aria-hidden="true"><path d="M1 5.2l3.4 3.3L11 1.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>`).join("");
+    const items = () => [...menu.children];
+    let act = 0;
+    const setAct = i => {
+        act = (i + items().length) % items().length;
+        items().forEach((li, j) => li.classList.toggle("is-active", j === act));
+        menu.setAttribute("aria-activedescendant", items()[act].id)
+    };
+    const open = () => {
+        if (!menu.hidden) return;
+        syncSortDropdown();
+        menu.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+        setAct(sel.selectedIndex);
+        menu.focus({
+            preventScroll: true
+        })
+    };
+    const close = refocus => {
+        if (menu.hidden) return;
+        menu.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+        if (refocus) btn.focus({
+            preventScroll: true
+        })
+    };
+    const choose = i => {
+        const o = sel.options[i];
+        if (o && sel.value !== o.value) {
+            sel.value = o.value;
+            sel.dispatchEvent(new Event("change", {
+                bubbles: true
+            }))
+        }
+        syncSortDropdown();
+        close(true)
+    };
+    btn.addEventListener("click", () => menu.hidden ? open() : close(true));
+    btn.addEventListener("keydown", e => {
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            e.preventDefault();
+            open()
+        }
+    });
+    menu.addEventListener("click", e => {
+        const li = e.target.closest("[role=option]");
+        if (li) choose(items().indexOf(li))
+    });
+    menu.addEventListener("mousemove", e => {
+        const li = e.target.closest("[role=option]");
+        if (li) setAct(items().indexOf(li))
+    });
+    menu.addEventListener("keydown", e => {
+        const k = e.key;
+        if (k === "ArrowDown") {
+            e.preventDefault();
+            setAct(act + 1)
+        } else if (k === "ArrowUp") {
+            e.preventDefault();
+            setAct(act - 1)
+        } else if (k === "Home") {
+            e.preventDefault();
+            setAct(0)
+        } else if (k === "End") {
+            e.preventDefault();
+            setAct(items().length - 1)
+        } else if (k === "Enter" || k === " ") {
+            e.preventDefault();
+            choose(act)
+        } else if (k === "Escape") {
+            e.preventDefault();
+            close(true)
+        } else if (k === "Tab") close(false)
+    });
+    document.addEventListener("pointerdown", e => {
+        if (!wrap.contains(e.target)) close(false)
+    });
+    addEventListener("hashchange", () => close(false));
+    sortDD = {
+        btn,
+        menu,
+        items
+    };
+    syncSortDropdown()
+}
+
+function syncSortDropdown() {
+    if (!sortDD) return;
+    const sel = $("#sortSelect"),
+        o = sel.options[sel.selectedIndex];
+    sortDD.btn.querySelector(".dd-label").textContent = o.textContent;
+    sortDD.btn.setAttribute("aria-label", (sel.getAttribute("aria-label") || "") + ": " + o.textContent);
+    sortDD.items().forEach((li, i) => li.setAttribute("aria-selected", String(i === sel.selectedIndex)))
 }
 
 function renderFeatured() {
@@ -1053,6 +1167,7 @@ $("#goldenExplore").addEventListener("click", () => {
     location.hash = "#/menu/gold"
 });
 window.onSpyHook = onSpy;
+initSortDropdown();
 renderTabs();
 renderFeatured();
 renderFeaturedJuices();

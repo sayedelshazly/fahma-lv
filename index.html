@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
     <style>
-        
+
     </style>
 </head>
 
@@ -123,12 +123,14 @@
                         البرجر</small></span></a>
             <nav class="nav-links" id="navLinks" aria-label="التنقل الرئيسي">
                 <a class="active" href="#home">الرئيسية</a><a href="#categories">أصناف أكتر</a><a
-                    href="#/menu">أكلات</a><a href="#/juices">عصائر</a><a href="#golden">الدهب للدهب</a><a href="#tracking"> تابع أوردرك</a>
-            <div class="nav-extra">
-                <a class="btn btn-orange" href="#/menu">اطلب وجبتك <i class="fa-solid fa-arrow-left"></i></a>
-                <button class="nav-wa" type="button" data-wa><i class="fa-brands fa-whatsapp"></i> اطلب على واتساب</button>
-                <p>برجر مشوي على الفحم، وطلبك بيتم عبر واتساب.</p>
-            </div>
+                    href="#/menu">المنيو</a><a href="#/juices">العصائر</a><a href="#golden">الدهب للدهب</a><a
+                    href="#tracking"> تابع أوردرك</a>
+                <div class="nav-extra">
+                    <a class="btn btn-orange" href="#/menu">اطلب وجبتك <i class="fa-solid fa-arrow-left"></i></a>
+                    <button class="nav-wa" type="button" data-wa><i class="fa-brands fa-whatsapp"></i> اطلب على
+                        واتساب</button>
+                    <p>برجر مشوي على الفحم، وطلبك بيتم عبر واتساب.</p>
+                </div>
             </nav>
             <div class="nav-actions"><button class="icon-btn" id="openCart" aria-label="فتح سلة الطلبات"><i
                         class="fa-solid fa-bag-shopping"></i><span class="count" id="cartCount">0</span></button><a
@@ -144,7 +146,7 @@
                     <span class="eyebrow">مش مجرد برجر… دا قصة</span>
                     <h1>قطمة واحدة<br>وتدخل <span>المود.</span></h1>
                     <p>لحمه مشويه على الفحم، جبنة سايحة، وصوصات معمولة مخصوص. كل طبقة ليها حكاية… وكل قطمة تستاهل.</p>
-                    <div class="hero-actions"><a class="btn btn-orange" href="#/menu">بص ع الأكلات <i
+                    <div class="hero-actions"><a class="btn btn-orange" href="#/menu">بص ع المنيو <i
                                 class="fa-solid fa-arrow-left"></i></a><a class="btn btn-outline"
                             style="color:#f5f0e5;border-color:#ffffff35" href="#golden"><i class="fa-solid fa-crown"
                                 style="color:var(--gold)"></i> الدهب للدهب</a></div>
@@ -191,7 +193,7 @@
                 </div>
                 <div class="category-row reveal">
                     <button class="category" data-category="all"><span class="category-icon">🍔</span><span><strong>كل
-                                الأكلات</strong><small>كل الاختيارات</small></span></button>
+                                المنيو</strong><small>كل الاختيارات</small></span></button>
                     <button class="category" data-category="beef"><span class="category-icon">🥩</span><span><strong>بيف
                                 برجر</strong><small>لحم على اللهب</small></span></button>
                     <button class="category" data-category="chicken"><span
@@ -212,10 +214,10 @@
                     <div>
                         <h2>اختيارات فحمة</h2>
                     </div>
-                    <p>٣ أكلات بيطلبها الناس أكتر. بص علي الأكلات.</p>
+                    <p>٣ أكلات بيطلبها الناس أكتر. والمنيو كامل بص علية.</p>
                 </div>
                 <div class="products feat-grid" id="featured"></div>
-                <div class="featured-cta"><a class="btn btn-orange" href="#/menu">شوف الأكلات <i
+                <div class="featured-cta"><a class="btn btn-orange" href="#/menu">شوف المنيو <i
                             class="fa-solid fa-arrow-left"></i></a></div>
             </div>
         </section>
@@ -249,10 +251,10 @@
                     <p>اخترنا لك ٣ عصائر. وباقي القايمة في صفحة العصائر.</p>
                 </div>
                 <div class="products feat-grid" id="featuredJuices"></div>
-                <div class="featured-cta"><a class="btn btn-orange" href="#/juices">شوف العصائر <i class="fa-solid fa-arrow-left"></i></a></div>
+                <div class="featured-cta"><a class="btn btn-orange" href="#/juices">شوف العصائر <i
+                            class="fa-solid fa-arrow-left"></i></a></div>
             </div>
         </section>
-<!-- 
         <section class="promise">
             <div class="wrap">
                 <div class="section-head reveal">
@@ -285,7 +287,6 @@
                 </div>
             </div>
         </section>
-        -->
         <section class="tracking" id="tracking">
             <div class="wrap track-layout">
                 <div class="track-copy reveal"><span class="eyebrow">أوردرِك فين؟</span>
@@ -319,13 +320,14 @@
     </main>
     <section class="mp" id="menuPage" hidden>
         <div class="wrap">
-            <nav class="mp-crumb" aria-label="مسار التنقل"><a href="#home">الرئيسية</a><span>/</span><span id="mpCrumb">الأكلات</span>
+            <nav class="mp-crumb" aria-label="مسار التنقل"><a href="#home">الرئيسية</a><span>/</span><span
+                    id="mpCrumb">المنيو</span>
             </nav>
-            <h1 id="mpTitle">الأكلات</h1>
-            <nav class="mp-tabs" id="mpTabs" aria-label="أقسام الأكلات"></nav>
+            <h1 id="mpTitle">المنيو</h1>
+            <nav class="mp-tabs" id="mpTabs" aria-label="أقسام المنيو"></nav>
             <div class="mp-tools"><label class="searchbox"><i class="fa-solid fa-magnifying-glass"></i><input
                         type="search" id="searchInput" placeholder="بتدور على إيه؟"
-                        aria-label="دور في الأكلات"></label><select class="mp-sort" id="sortSelect"
+                        aria-label="دور في المنيو"></label><select class="mp-sort" id="sortSelect"
                     aria-label="ترتيب الوجبات">
                     <option value="popular">الأكثر طلبًا</option>
                     <option value="new">وصل حديثًا</option>
@@ -350,8 +352,8 @@
                             aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a></div>
                 </div>
                 <div class="footer-col">
-                    <h4>اتنقّل بسرعة</h4><a href="#/menu">الأكلات</a><a href="#/juices">العصائر</a><a href="#golden">الدهب للدهب</a><a
-                        href="#tracking">تابع
+                    <h4>اتنقّل بسرعة</h4><a href="#/menu">المنيو</a><a href="#/juices">العصائر</a><a
+                        href="#golden">الدهب للدهب</a><a href="#tracking">تابع
                         أوردرك</a><a href="#categories">الأصناف كلها</a>
                 </div>
                 <div class="footer-col">
